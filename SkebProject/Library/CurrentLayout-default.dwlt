@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 713}
   m_MaxSize: {x: 14002, y: 18063}
   vertical: 0
-  controlID: 58
+  controlID: 147
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 713}
   m_MaxSize: {x: 10001, y: 18063}
   vertical: 1
-  controlID: 59
+  controlID: 40
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 442}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 0
-  controlID: 60
+  controlID: 41
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 61
+  controlID: 42
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -447,7 +447,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 8cf7ffff6afbffff
+      m_ExpandedIDs: 72d3ffff6afbffff56590000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -507,9 +507,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 3.7608118, y: 8.351158, z: 136.29042}
+    m_Target: {x: 1.2090687, y: 4.8866577, z: -24.526525}
     speed: 2
-    m_Value: {x: 3.7608118, y: 8.351158, z: 136.29042}
+    m_Value: {x: 1.2090687, y: 4.8866577, z: -24.526525}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -555,13 +555,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.18093577, y: -0.38469383, z: 0.07718015, w: -0.9018419}
+    m_Target: {x: -0.013822465, y: -0.9860801, z: 0.10990674, w: -0.12400737}
     speed: 2
-    m_Value: {x: -0.18011518, y: -0.3941413, z: 0.07907558, w: -0.89775175}
+    m_Value: {x: -0.013657575, y: -0.98626393, z: 0.10992723, w: -0.12252797}
   m_Size:
     m_Target: 25.516655
     speed: 2
-    m_Value: 24.417852
+    m_Value: 25.516655
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -712,14 +712,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: 51
-  m_LastProjectPath: D:\Projeler\SkebProject
+  m_LastProjectPath: "C:\\Users\\\u0130brahim Karabay\\Documents\\GitHub\\Skeb_Marriage_Run\\SkebProject"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 463f0000
     m_LastClickedID: 16198
-    m_ExpandedIDs: 00000000003f0000023f0000043f0000063f0000083f00000a3f00000c3f00000e3f0000103f0000123f0000143f0000463f000000ca9a3b
+    m_ExpandedIDs: 00000000003f0000023f0000043f0000063f0000083f00000a3f00000c3f00000e3f0000103f0000123f0000143f0000463f00003c45000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -791,7 +791,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 12}
+      m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
