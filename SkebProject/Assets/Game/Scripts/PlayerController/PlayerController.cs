@@ -137,20 +137,21 @@ public class PlayerController : MonoBehaviour
             case RelationStatus.NORMAL:
                 GameManager.Instance.UIManager.Bar.color = Color.red;
                 GameManager.Instance.UIManager.StatusTextAdjust("Normal", Color.red);
-                CouplePositionAdjust(4, -4);
+                CouplePositionAdjust(new Vector3(4,0,0), new Vector3(-4, 0, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(11f, 12f, 1f);
                 Speed = 10f;
                 break;
             case RelationStatus.GOOD:
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
-                CouplePositionAdjust(1.4f, -1.4f);
+                CouplePositionAdjust(new Vector3(1.4f, 0, 0), new Vector3(-1.4f, 0, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
                 Speed = 15f;
                 break;
             case RelationStatus.EXCELLENT:
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
+                CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));
                 Speed = 20f;
                 break;
             default:
@@ -232,9 +233,9 @@ public class PlayerController : MonoBehaviour
         Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity);
     }
 
-    private void CouplePositionAdjust(float _malePos, float _femalePos)
+    private void CouplePositionAdjust(Vector3 _malePos, Vector3 _femalePos)
     {
-        Male.transform.DOLocalMove(new Vector3(_malePos, 0, 0), 0.5f).SetEase(Ease.OutCubic);
-        Female.transform.DOLocalMove(new Vector3(_femalePos, 0, 0), 0.5f).SetEase(Ease.OutCubic);
+        Male.transform.DOLocalMove(_malePos, 0.5f).SetEase(Ease.OutCubic);
+        Female.transform.DOLocalMove(_femalePos, 0.5f).SetEase(Ease.OutCubic);
     }
 }

@@ -26,8 +26,17 @@ public class Male : Human
     }
     private void WalkState()
     {
-        transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
-        HumanState = HumanState.WALK;
+        var Player = GameManager.Instance.Player;
+        if (Player.RelationStatus==RelationStatus.EXCELLENT)
+        {
+            HumanState = HumanState.CARRY;
+        }
+        else
+        {
+            transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
+            HumanState = HumanState.WALK;
+        }
+        
     }
 
     private void IdleState()
@@ -47,6 +56,7 @@ public class Male : Human
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
                 break;
             case RelationStatus.EXCELLENT:
+                HumanState = HumanState.CARRYIDLE;
                 break;
             default:
                 break;

@@ -40,6 +40,15 @@ public abstract class Human : MonoBehaviour
             case HumanState.KISS:
                 TrigAnimation("Kiss");
                 break;
+            case HumanState.CARRY:
+                TrigAnimation("Carry");
+                break;
+            case HumanState.SIT:
+                TrigAnimation("Sit");
+                break;
+            case HumanState.CARRYIDLE:
+                TrigAnimation("CarryIdle");
+                break;
             default:
                 break;
         }

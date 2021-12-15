@@ -7,4 +7,7 @@ public enum HumanState
     IDLE,
     WALK,
     KISS,
+    CARRY,
+    SIT,
+    CARRYIDLE,
 }
