@@ -49,6 +49,9 @@ public abstract class Human : MonoBehaviour
             case HumanState.CARRYIDLE:
                 TrigAnimation("CarryIdle");
                 break;
+            case HumanState.ARGUING:
+                TrigAnimation("Arguing");
+                break;
             default:
                 break;
         }

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            
+            GameManager.Instance.UIManager.Bar.fillAmount = -RelationCount / 100f;
         }
     }
 
@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
         else if (RelationCount >= -100 && RelationCount < -50)
         {
-            RelationCount = -100;
             RelationStatus = RelationStatus.TERRIBLE;
         }
 
@@ -125,30 +124,43 @@ public class PlayerController : MonoBehaviour
         switch (RelationStatus)
         {
             case RelationStatus.TERRIBLE:
+                var newParticle4 = Instantiate(GameManager.Instance.Data.Particles[1], new Vector3(0,4f,0), Quaternion.identity,transform);
+                newParticle4.transform.localPosition = new Vector3(0, 10f, 0);
+                Destroy(newParticle4, 2f);
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
                 Speed = 6f;
                 break;
             case RelationStatus.BAD:
-                GameManager.Instance.UIManager.Bar.color = Color.gray;
-                GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.gray);
+                var newParticle3 = Instantiate(GameManager.Instance.Data.Particles[1], new Vector3(0, 4f, 0), Quaternion.identity,transform);
+                newParticle3.transform.localPosition = new Vector3(0, 10f, 0);
+                Destroy(newParticle3, 5f);
+                GameManager.Instance.UIManager.Bar.color = Color.red;
+                GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.red);
                 Speed = 8f;
                 break;
             case RelationStatus.NORMAL:
-                GameManager.Instance.UIManager.Bar.color = Color.red;
-                GameManager.Instance.UIManager.StatusTextAdjust("Normal", Color.red);
-                CouplePositionAdjust(new Vector3(4,0,0), new Vector3(-4, 0, 0));
+                Color color = new Color32(255, 165, 0, 255);
+                GameManager.Instance.UIManager.Bar.color = color;
+                GameManager.Instance.UIManager.StatusTextAdjust("Normal", color);
+                CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4, 0, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(11f, 12f, 1f);
                 Speed = 10f;
                 break;
             case RelationStatus.GOOD:
+                var newParticle = Instantiate(GameManager.Instance.Data.Particles[0], new Vector3(0, 4f, 0), Quaternion.identity,transform);
+                newParticle.transform.localPosition = new Vector3(0, 10f, 0);
+                Destroy(newParticle, 2f);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
-                CouplePositionAdjust(new Vector3(1.4f, 0, 0), new Vector3(-1.4f, 0, 0));
+                CouplePositionAdjust(new Vector3(1.3f, 0f, 0), new Vector3(-1.3f, 0f, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
                 Speed = 15f;
                 break;
             case RelationStatus.EXCELLENT:
+                var newParticle2 = Instantiate(GameManager.Instance.Data.Particles[0], new Vector3(0, 4f, 0), Quaternion.identity, transform);
+                newParticle2.transform.localPosition = new Vector3(0, 10f, 0);
+                Destroy(newParticle2, 2f);
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));

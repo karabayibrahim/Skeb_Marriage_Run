@@ -10,4 +10,5 @@ public enum HumanState
     CARRY,
     SIT,
     CARRYIDLE,
+    ARGUING,
 }

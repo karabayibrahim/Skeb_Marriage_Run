@@ -36,3 +36,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6371c5d32fac57140888da115b978de6, type: 2}
   - {fileID: 2100000, guid: cc25d05c74d444f4588042a9bcbba9ff, type: 2}
   - {fileID: 2100000, guid: 13e5e223d55abd8498c46a336295a778, type: 2}
+  Particles:
+  - {fileID: 7851418945745292251, guid: 6bf35b6ca61d9154382b0f522e476c69, type: 3}
+  - {fileID: 906972048968573904, guid: 724520b260814c34987cbba33f4e7f2a, type: 3}
+  - {fileID: 1820370612893024914, guid: 3b43fd8350de9e9438e183aed0b918c5, type: 3}
+  - {fileID: 3879569103718478715, guid: 68edbe1f31be41543a2ce2cfe1cf027a, type: 3}
+  - {fileID: 3968678082030209241, guid: 2532608cbb9d5434e8383c4a31a2c453, type: 3}

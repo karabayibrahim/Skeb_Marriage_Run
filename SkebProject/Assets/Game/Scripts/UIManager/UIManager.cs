@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Image Bar;
-    public Image NegativeBar;
     public Text StatusText;
     void Start()
     {
