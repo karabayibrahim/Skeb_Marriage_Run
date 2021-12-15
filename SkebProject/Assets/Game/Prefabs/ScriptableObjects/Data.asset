@@ -21,10 +21,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   CollectionObjsPositive:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6565461372278021871, guid: 4a349226ca5d85c41b50b91e4d0d1339, type: 3}
+  - {fileID: 6103527433813750261, guid: 9b3993f5f41f8a44aad523d39e895a63, type: 3}
+  - {fileID: 259590319065271002, guid: a51ce6c89b972d9418e6c7f8f43c86a9, type: 3}
   CollectionObjsNegative:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4638131363768164481, guid: 961803089e8e24f47b49800693ab5e87, type: 3}
+  - {fileID: 7466792135359560271, guid: e7b2cf8d1b314b9458e7271b766d5125, type: 3}
+  - {fileID: 940215089718796170, guid: a2e9b48bf5fc7ce4795f8c95326635ee, type: 3}
+  GateNegativeMaterials:
+  - {fileID: 2100000, guid: 7527e6b4e22e789419131b52685c0e7d, type: 2}
+  - {fileID: 2100000, guid: f9fef0050a62e4b4d9e46b3672a72213, type: 2}
+  - {fileID: 2100000, guid: 312e84095b15ac04b8d140bbf99e414d, type: 2}
+  GatePositiveMaterials:
+  - {fileID: 2100000, guid: 6371c5d32fac57140888da115b978de6, type: 2}
+  - {fileID: 2100000, guid: cc25d05c74d444f4588042a9bcbba9ff, type: 2}
+  - {fileID: 2100000, guid: 13e5e223d55abd8498c46a336295a778, type: 2}

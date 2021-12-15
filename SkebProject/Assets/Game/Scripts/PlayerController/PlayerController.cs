@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
     public RelationStatus _relationStatus;
@@ -32,34 +32,55 @@ public class PlayerController : MonoBehaviour
             }
             _reletionCount = value;
             OnRelationCountControl();
+            OnProgressBarControl();
+        }
+    }
+
+    private void OnProgressBarControl()
+    {
+        if (RelationCount>=0)
+        {
+            GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
+        }
+        else
+        {
+            
         }
     }
 
     private void OnRelationCountControl()
     {
-        if (RelationCount>=-100&&RelationCount<-50)
+        if (RelationCount<-100)
+        {
+            RelationCount = -100;
+        }
+
+        else if (RelationCount >= -100 && RelationCount < -50)
         {
             RelationCount = -100;
             RelationStatus = RelationStatus.TERRIBLE;
         }
 
-        else if (RelationCount>=-50&&RelationCount<0)
+        else if (RelationCount >= -50 && RelationCount < 0)
         {
             RelationStatus = RelationStatus.BAD;
         }
 
-        else if (RelationCount>=0&&RelationCount<=50)
+        else if (RelationCount >= 0 && RelationCount < 50)
         {
             RelationStatus = RelationStatus.NORMAL;
         }
-        else if (RelationCount>50&&RelationCount<100)
+        else if (RelationCount >= 50 && RelationCount < 75)
         {
-            RelationStatus= RelationStatus.GOOD;
+            RelationStatus = RelationStatus.GOOD;
+        }
+        else if (RelationCount>=75 && RelationCount <100)
+        {
+            RelationStatus = RelationStatus.EXCELLENT;
         }
         else if (RelationCount>=100)
         {
             RelationCount = 100;
-            RelationStatus = RelationStatus.EXCELLENT;
         }
     }
 
@@ -104,18 +125,32 @@ public class PlayerController : MonoBehaviour
         switch (RelationStatus)
         {
             case RelationStatus.TERRIBLE:
+                GameManager.Instance.UIManager.Bar.color = Color.black;
+                GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
                 Speed = 6f;
                 break;
             case RelationStatus.BAD:
+                GameManager.Instance.UIManager.Bar.color = Color.gray;
+                GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.gray);
                 Speed = 8f;
                 break;
             case RelationStatus.NORMAL:
+                GameManager.Instance.UIManager.Bar.color = Color.red;
+                GameManager.Instance.UIManager.StatusTextAdjust("Normal", Color.red);
+                CouplePositionAdjust(4, -4);
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(11f, 12f, 1f);
                 Speed = 10f;
                 break;
             case RelationStatus.GOOD:
+                GameManager.Instance.UIManager.Bar.color = Color.yellow;
+                GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
+                CouplePositionAdjust(1.4f, -1.4f);
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
                 Speed = 15f;
                 break;
             case RelationStatus.EXCELLENT:
+                GameManager.Instance.UIManager.Bar.color = Color.green;
+                GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 Speed = 20f;
                 break;
             default:
@@ -158,6 +193,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         RelationStatus = RelationStatus.NORMAL;
+        GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
     }
 
     // Update is called once per frame
@@ -194,5 +230,11 @@ public class PlayerController : MonoBehaviour
         Destroy(Female);
         Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity);
         Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity);
+    }
+
+    private void CouplePositionAdjust(float _malePos, float _femalePos)
+    {
+        Male.transform.DOLocalMove(new Vector3(_malePos, 0, 0), 0.5f).SetEase(Ease.OutCubic);
+        Female.transform.DOLocalMove(new Vector3(_femalePos, 0, 0), 0.5f).SetEase(Ease.OutCubic);
     }
 }

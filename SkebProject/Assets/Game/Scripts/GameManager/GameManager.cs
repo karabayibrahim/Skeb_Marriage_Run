@@ -8,6 +8,7 @@ public class GameManager :MonoSingleton<GameManager>
     public PlayerController Player;
     public DataSystem Data;
     public CinemachineVirtualCamera Cam;
+    public UIManager UIManager;
     public int GameStateIndex;
     public static Action GameStateChanged;
 

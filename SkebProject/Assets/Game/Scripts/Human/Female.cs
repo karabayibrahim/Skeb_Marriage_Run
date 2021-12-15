@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Female : Human
 {
     
@@ -27,11 +27,30 @@ public class Female : Human
 
     private void WalkState()
     {
+        transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
         HumanState = HumanState.WALK;
     }
 
     private void IdleState()
     {
-        HumanState = HumanState.IDLE;
+        var Player = GameManager.Instance.Player;
+        switch (Player.RelationStatus)
+        {
+            case RelationStatus.TERRIBLE:
+                break;
+            case RelationStatus.BAD:
+                break;
+            case RelationStatus.NORMAL:
+                HumanState = HumanState.IDLE;
+                break;
+            case RelationStatus.GOOD:
+                HumanState = HumanState.KISS;
+                transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
+                break;
+            case RelationStatus.EXCELLENT:
+                break;
+            default:
+                break;
+        }
     }
 }

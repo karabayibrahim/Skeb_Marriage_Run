@@ -6,4 +6,5 @@ public enum HumanState
 {
     IDLE,
     WALK,
+    KISS,
 }

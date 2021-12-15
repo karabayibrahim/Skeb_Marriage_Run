@@ -10,5 +10,7 @@ public class DataSystem : ScriptableObject
     public List<Male> Males = new List<Male>();
     public List<CollectionObj> CollectionObjsPositive = new List<CollectionObj>();
     public List<CollectionObj> CollectionObjsNegative = new List<CollectionObj>();
+    public List<Material> GateNegativeMaterials = new List<Material>();
+    public List<Material> GatePositiveMaterials = new List<Material>();
 
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 732451664301173104}
   m_Layer: 0
   m_Name: CubePositive
-  m_TagString: Untagged
+  m_TagString: Positive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

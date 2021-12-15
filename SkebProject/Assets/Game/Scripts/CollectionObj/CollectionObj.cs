@@ -8,11 +8,11 @@ public class CollectionObj : MonoBehaviour, ICollectable
     {
         if (gameObject.tag=="Positive")
         {
-            GameManager.Instance.Player.RelationCount++;
+            GameManager.Instance.Player.RelationCount+=5;
         }
         else
         {
-            GameManager.Instance.Player.RelationCount--;
+            GameManager.Instance.Player.RelationCount-=5;
         }
         Destroy(gameObject);
 
