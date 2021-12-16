@@ -11,4 +11,6 @@ public enum HumanState
     SIT,
     CARRYIDLE,
     ARGUING,
+    SADWALK,
+    SADIDLE,
 }

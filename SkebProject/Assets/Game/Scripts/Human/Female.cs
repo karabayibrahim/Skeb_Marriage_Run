@@ -11,6 +11,11 @@ public class Female : Human
     void Start()
     {
         base._anim = GetComponent<Animator>();
+        
+    }
+
+    private void OnEnable()
+    {
         PlayerController.WalkAction += WalkState;
         PlayerController.IdleAction += IdleState;
     }
@@ -20,17 +25,23 @@ public class Female : Human
         PlayerController.WalkAction -= WalkState;
         PlayerController.IdleAction -= IdleState;
     }
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void WalkState()
+    public override void WalkState()
     {
         Destroy(newParticle);
         var Player = GameManager.Instance.Player;
         if (Player.RelationStatus == RelationStatus.EXCELLENT)
+        {
+            HumanState = HumanState.SIT;
+            transform.DORotate(new Vector3(0, -90f - 0), 0.5f);
+        }
+        else if (Player.RelationStatus==RelationStatus.TERRIBLE)
         {
             HumanState = HumanState.SIT;
             transform.DORotate(new Vector3(0, -90f - 0), 0.5f);
@@ -40,10 +51,9 @@ public class Female : Human
             transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
             HumanState = HumanState.WALK;
         }
-        
     }
 
-    private void IdleState()
+    public override void IdleState()
     {
         var Player = GameManager.Instance.Player;
         switch (Player.RelationStatus)
@@ -73,4 +83,6 @@ public class Female : Human
                 break;
         }
     }
+
+
 }

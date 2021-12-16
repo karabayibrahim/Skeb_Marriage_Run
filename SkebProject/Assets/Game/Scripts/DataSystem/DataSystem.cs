@@ -13,5 +13,6 @@ public class DataSystem : ScriptableObject
     public List<Material> GateNegativeMaterials = new List<Material>();
     public List<Material> GatePositiveMaterials = new List<Material>();
     public List<GameObject> Particles = new List<GameObject>();
+    public Human NewMale;
 
 }

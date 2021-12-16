@@ -52,6 +52,12 @@ public abstract class Human : MonoBehaviour
             case HumanState.ARGUING:
                 TrigAnimation("Arguing");
                 break;
+            case HumanState.SADWALK:
+                TrigAnimation("SadWalk");
+                break;
+            case HumanState.SADIDLE:
+                TrigAnimation("SadIdle");
+                break;
             default:
                 break;
         }
@@ -74,6 +80,8 @@ public abstract class Human : MonoBehaviour
         _anim.CrossFade(animName, 0.05f);
     }
 
+    public abstract void WalkState();
+    public abstract void IdleState();
    
 
 

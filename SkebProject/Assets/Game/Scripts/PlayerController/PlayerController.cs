@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public AgeStatus _ageStatus;
     public Human Male;
     public Human Female;
+    public Human NewMale;
     public float Speed;
     public float swerveSpeed;
     public static Action WalkAction;
@@ -124,22 +125,23 @@ public class PlayerController : MonoBehaviour
         switch (RelationStatus)
         {
             case RelationStatus.TERRIBLE:
-                var newParticle4 = Instantiate(GameManager.Instance.Data.Particles[1], new Vector3(0,4f,0), Quaternion.identity,transform);
-                newParticle4.transform.localPosition = new Vector3(0, 10f, 0);
-                Destroy(newParticle4, 2f);
+                NewMale=NewHumanSpawn();
+                ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
+                CouplePositionAdjust(new Vector3(-4, 0, 0), new Vector3(3f, 3, 1.3f));
                 Speed = 6f;
                 break;
             case RelationStatus.BAD:
-                var newParticle3 = Instantiate(GameManager.Instance.Data.Particles[1], new Vector3(0, 4f, 0), Quaternion.identity,transform);
-                newParticle3.transform.localPosition = new Vector3(0, 10f, 0);
-                Destroy(newParticle3, 5f);
+                NewMaleDestroy();
+                ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.red;
                 GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.red);
+                CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4f, 0, 0f));
                 Speed = 8f;
                 break;
             case RelationStatus.NORMAL:
+                NewMaleDestroy();
                 Color color = new Color32(255, 165, 0, 255);
                 GameManager.Instance.UIManager.Bar.color = color;
                 GameManager.Instance.UIManager.StatusTextAdjust("Normal", color);
@@ -148,9 +150,8 @@ public class PlayerController : MonoBehaviour
                 Speed = 10f;
                 break;
             case RelationStatus.GOOD:
-                var newParticle = Instantiate(GameManager.Instance.Data.Particles[0], new Vector3(0, 4f, 0), Quaternion.identity,transform);
-                newParticle.transform.localPosition = new Vector3(0, 10f, 0);
-                Destroy(newParticle, 2f);
+                NewMaleDestroy();
+                ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
                 CouplePositionAdjust(new Vector3(1.3f, 0f, 0), new Vector3(-1.3f, 0f, 0));
@@ -158,9 +159,8 @@ public class PlayerController : MonoBehaviour
                 Speed = 15f;
                 break;
             case RelationStatus.EXCELLENT:
-                var newParticle2 = Instantiate(GameManager.Instance.Data.Particles[0], new Vector3(0, 4f, 0), Quaternion.identity, transform);
-                newParticle2.transform.localPosition = new Vector3(0, 10f, 0);
-                Destroy(newParticle2, 2f);
+                NewMaleDestroy();
+                ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));
@@ -249,5 +249,27 @@ public class PlayerController : MonoBehaviour
     {
         Male.transform.DOLocalMove(_malePos, 0.5f).SetEase(Ease.OutCubic);
         Female.transform.DOLocalMove(_femalePos, 0.5f).SetEase(Ease.OutCubic);
+    }
+
+    private Human NewHumanSpawn()
+    {
+        var _newHuman=Instantiate(GameManager.Instance.Data.NewMale, transform.position, Quaternion.identity,transform);
+        _newHuman.transform.localPosition = new Vector3(3, 0, 0);
+        return _newHuman;
+    }
+
+    private void NewMaleDestroy()
+    {
+        if (NewMale!=null)
+        {
+            Destroy(NewMale.gameObject);
+        }
+    }
+
+    private void ParticleSpawn(int _index)
+    {
+        var newParticle = Instantiate(GameManager.Instance.Data.Particles[_index], new Vector3(0, 4f, 0), Quaternion.identity, transform);
+        newParticle.transform.localPosition = new Vector3(0, 10f, 0);
+        Destroy(newParticle, 2f);
     }
 }

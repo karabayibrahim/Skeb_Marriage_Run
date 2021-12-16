@@ -8,6 +8,10 @@ public class Male : Human
     void Start()
     {
         base._anim = GetComponent<Animator>();
+        
+    }
+    private void OnEnable()
+    {
         PlayerController.WalkAction += WalkState;
         PlayerController.IdleAction += IdleState;
     }
@@ -23,7 +27,7 @@ public class Male : Human
     {
 
     }
-    private void WalkState()
+    public override void WalkState()
     {
         Destroy(newParticle);
         var Player = GameManager.Instance.Player;
@@ -31,25 +35,32 @@ public class Male : Human
         {
             HumanState = HumanState.CARRY;
         }
+        else if (Player.RelationStatus==RelationStatus.TERRIBLE)
+        {
+            HumanState = HumanState.SADWALK;
+        }
         else
         {
             transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
             HumanState = HumanState.WALK;
         }
-
     }
 
-    private void IdleState()
+
+    public override void IdleState()
     {
         var Player = GameManager.Instance.Player;
         switch (Player.RelationStatus)
         {
             case RelationStatus.TERRIBLE:
+                HumanState = HumanState.SADIDLE;
+                newParticle = Instantiate(GameManager.Instance.Data.Particles[5], transform.position, Quaternion.identity, transform);
+                newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
                 break;
             case RelationStatus.BAD:
                 HumanState = HumanState.ARGUING;
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
-                newParticle = Instantiate(GameManager.Instance.Data.Particles[3], transform.position, Quaternion.identity,transform);
+                newParticle = Instantiate(GameManager.Instance.Data.Particles[3], transform.position, Quaternion.identity, transform);
                 newParticle.transform.localPosition = new Vector3(0, 12.5f, 0);
                 break;
             case RelationStatus.NORMAL:
@@ -58,7 +69,7 @@ public class Male : Human
             case RelationStatus.GOOD:
                 HumanState = HumanState.KISS;
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
-                newParticle = Instantiate(GameManager.Instance.Data.Particles[2], transform.position, Quaternion.identity,transform);
+                newParticle = Instantiate(GameManager.Instance.Data.Particles[2], transform.position, Quaternion.identity, transform);
                 newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
                 break;
             case RelationStatus.EXCELLENT:
@@ -70,6 +81,10 @@ public class Male : Human
                 break;
         }
     }
+
+
+
+
 
 
 }
