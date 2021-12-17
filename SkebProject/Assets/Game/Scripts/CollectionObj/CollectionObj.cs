@@ -20,7 +20,7 @@ public class CollectionObj : MonoBehaviour, ICollectable
 
     private void Update()
     {
-        transform.Rotate(0, 1f, 0);
+        transform.Rotate(0, 0.5f, 0);
     }
 
     void Start()

@@ -6,12 +6,10 @@ public class Female : Human
 {
 
     private GameObject newParticle;
-
     // Start is called before the first frame update
     void Start()
     {
         base._anim = GetComponent<Animator>();
-        
     }
 
     private void OnEnable()
@@ -29,7 +27,7 @@ public class Female : Human
     // Update is called once per frame
     void Update()
     {
-
+        _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
     }
 
     public override void WalkState()
@@ -41,7 +39,7 @@ public class Female : Human
             HumanState = HumanState.SIT;
             transform.DORotate(new Vector3(0, -90f - 0), 0.5f);
         }
-        else if (Player.RelationStatus==RelationStatus.TERRIBLE)
+        else if (Player.RelationStatus == RelationStatus.TERRIBLE)
         {
             HumanState = HumanState.SIT;
             transform.DORotate(new Vector3(0, -90f - 0), 0.5f);

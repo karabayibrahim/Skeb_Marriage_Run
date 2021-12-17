@@ -6,7 +6,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     private int _levelIndex;
-
+    public Finish Finish;
     public int LevelIndex
     {
         get

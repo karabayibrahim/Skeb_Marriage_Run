@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
                 CouplePositionAdjust(new Vector3(-4, 0, 0), new Vector3(3f, 3, 1.3f));
-                Speed = 6f;
+                Speed = 8f;
                 break;
             case RelationStatus.BAD:
                 NewMaleDestroy();
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.red;
                 GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.red);
                 CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4f, 0, 0f));
-                Speed = 8f;
+                Speed = 10f;
                 break;
             case RelationStatus.NORMAL:
                 NewMaleDestroy();
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.StatusTextAdjust("Normal", color);
                 CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4, 0, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(11f, 12f, 1f);
-                Speed = 10f;
+                Speed = 12f;
                 break;
             case RelationStatus.GOOD:
                 NewMaleDestroy();
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
                 CouplePositionAdjust(new Vector3(1.3f, 0f, 0), new Vector3(-1.3f, 0f, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
-                Speed = 15f;
+                Speed = 14f;
                 break;
             case RelationStatus.EXCELLENT:
                 NewMaleDestroy();
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));
-                Speed = 20f;
+                Speed = 16f;
                 break;
             default:
                 break;
@@ -277,5 +277,11 @@ public class PlayerController : MonoBehaviour
         var newParticle = Instantiate(GameManager.Instance.Data.Particles[_index], new Vector3(0, 4f, 0), Quaternion.identity, transform);
         newParticle.transform.localPosition = new Vector3(0, 7f, 0);
         Destroy(newParticle, 2f);
+    }
+
+    public float AgeCalculator()
+    {
+        var distance = gameObject.transform.position.z / GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+        return distance;
     }
 }

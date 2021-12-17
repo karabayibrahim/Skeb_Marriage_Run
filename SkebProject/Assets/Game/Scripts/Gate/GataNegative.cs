@@ -10,7 +10,7 @@ public class GataNegative : MonoBehaviour,ICollectable
 
     public void DoCollect()
     {
-        GameManager.Instance.Player.RelationCount += IncreaseAmount;
+        GameManager.Instance.Player.RelationCount -= IncreaseAmount;
         //var Player = GameManager.Instance.Player;
         //switch (Player.AgeStatus)
         //{

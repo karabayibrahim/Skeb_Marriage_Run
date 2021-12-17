@@ -25,7 +25,7 @@ public class Male : Human
     // Update is called once per frame
     void Update()
     {
-
+        _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
     }
     public override void WalkState()
     {
