@@ -6,10 +6,12 @@ public class GataNegative : MonoBehaviour,ICollectable
 {
     public float IncreaseAmount;
     public GameObject MySprite;
+    public GameObject MyParticle;
+
     public void DoCollect()
     {
         GameManager.Instance.Player.RelationCount += IncreaseAmount;
-        var Player = GameManager.Instance.Player;
+        //var Player = GameManager.Instance.Player;
         //switch (Player.AgeStatus)
         //{
         //    case AgeStatus.YOUNG:
@@ -22,6 +24,7 @@ public class GataNegative : MonoBehaviour,ICollectable
         //        break;
         //}
         Destroy(MySprite);
+        Destroy(MyParticle);
     }
 
     // Start is called before the first frame update

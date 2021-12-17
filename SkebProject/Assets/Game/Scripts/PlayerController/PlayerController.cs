@@ -178,17 +178,17 @@ public class PlayerController : MonoBehaviour
             case AgeStatus.YOUNG:
                 GameManager.Instance.GameStateIndex = 0;
                 GameManager.GameStateChanged?.Invoke();
-                CharacterChanged();
+                CharacterChanged(Male.transform.position,Female.transform.position);
                 break;
             case AgeStatus.ADULT:
                 GameManager.Instance.GameStateIndex = 1;
                 GameManager.GameStateChanged?.Invoke();
-                CharacterChanged();
+                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             case AgeStatus.OLD:
                 GameManager.Instance.GameStateIndex = 2;
                 GameManager.GameStateChanged?.Invoke();
-                CharacterChanged();
+                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             default:
                 break;
@@ -237,12 +237,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CharacterChanged()
+    private void CharacterChanged(Vector3 _malePoz,Vector3 _femalePoz)
     {
-        Destroy(Male);
-        Destroy(Female);
-        Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity);
-        Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity);
+        var maleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_malePoz.x, _malePoz.y+5f, _malePoz.z), Quaternion.identity,transform);
+        var femaleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_femalePoz.x, _femalePoz.y+5f,_femalePoz.z), Quaternion.identity,transform);
+        Destroy(maleParticle,5f);
+        Destroy(femaleParticle, 5f);
+        Destroy(Male.gameObject);
+        Destroy(Female.gameObject);
+        Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity,transform);
+        Male.transform.position = _malePoz;
+        Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity,transform);
+        Female.transform.position = _femalePoz;
     }
 
     private void CouplePositionAdjust(Vector3 _malePos, Vector3 _femalePos)
@@ -269,7 +275,7 @@ public class PlayerController : MonoBehaviour
     private void ParticleSpawn(int _index)
     {
         var newParticle = Instantiate(GameManager.Instance.Data.Particles[_index], new Vector3(0, 4f, 0), Quaternion.identity, transform);
-        newParticle.transform.localPosition = new Vector3(0, 10f, 0);
+        newParticle.transform.localPosition = new Vector3(0, 7f, 0);
         Destroy(newParticle, 2f);
     }
 }
