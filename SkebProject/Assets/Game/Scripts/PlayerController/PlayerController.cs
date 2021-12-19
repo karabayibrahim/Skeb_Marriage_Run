@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
                 CouplePositionAdjust(new Vector3(-4, 0, 0), new Vector3(3f, 3, 1.3f));
-                Speed = 8f;
+                Speed = 10f;
                 break;
             case RelationStatus.BAD:
                 NewMaleDestroy();
@@ -138,25 +138,25 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.red;
                 GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.red);
                 CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4f, 0, 0f));
-                Speed = 10f;
+                Speed = 12f;
                 break;
             case RelationStatus.NORMAL:
                 NewMaleDestroy();
                 Color color = new Color32(255, 165, 0, 255);
                 GameManager.Instance.UIManager.Bar.color = color;
                 GameManager.Instance.UIManager.StatusTextAdjust("Normal", color);
-                CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4, 0, 0));
-                gameObject.GetComponent<BoxCollider>().size = new Vector3(11f, 12f, 1f);
-                Speed = 12f;
+                CouplePositionAdjust(new Vector3(2, 0, 0), new Vector3(-2, 0, 0));
+                gameObject.GetComponent<BoxCollider>().size = new Vector3(8.5f, 12f, 1f);
+                Speed = 14f;
                 break;
             case RelationStatus.GOOD:
                 NewMaleDestroy();
                 ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
-                CouplePositionAdjust(new Vector3(1.3f, 0f, 0), new Vector3(-1.3f, 0f, 0));
+                CouplePositionAdjust(new Vector3(1.4f, -0.6f, 0), new Vector3(-1f, 0f, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
-                Speed = 14f;
+                Speed = 16f;
                 break;
             case RelationStatus.EXCELLENT:
                 NewMaleDestroy();
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));
-                Speed = 16f;
+                Speed = 18f;
                 break;
             default:
                 break;
