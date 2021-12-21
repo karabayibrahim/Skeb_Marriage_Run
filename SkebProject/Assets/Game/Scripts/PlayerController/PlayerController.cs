@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+
 public class PlayerController : MonoBehaviour
 {
     public RelationStatus _relationStatus;
@@ -14,8 +15,9 @@ public class PlayerController : MonoBehaviour
     public float swerveSpeed;
     public static Action WalkAction;
     public static Action IdleAction;
+    public int WalkRandomIndex;
     public float MoveFactorX => _moveFactorX;
-
+    
     private float _reletionCount;
     private float _lastFrameFingerPositionX;
     private float _moveFactorX;
@@ -129,8 +131,8 @@ public class PlayerController : MonoBehaviour
                 ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
-                CouplePositionAdjust(new Vector3(-4, 0, 0), new Vector3(3f, 3, 1.3f));
-                Speed = 10f;
+                CouplePositionAdjust(new Vector3(3, 0, 0), new Vector3(-3f, 3, 1.3f));
+                //Speed = 10f;
                 break;
             case RelationStatus.BAD:
                 NewMaleDestroy();
@@ -138,7 +140,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.red;
                 GameManager.Instance.UIManager.StatusTextAdjust("Bad", Color.red);
                 CouplePositionAdjust(new Vector3(4, 0, 0), new Vector3(-4f, 0, 0f));
-                Speed = 12f;
+                //Speed = 12f;
                 break;
             case RelationStatus.NORMAL:
                 NewMaleDestroy();
@@ -147,16 +149,16 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.StatusTextAdjust("Normal", color);
                 CouplePositionAdjust(new Vector3(2, 0, 0), new Vector3(-2, 0, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(8.5f, 12f, 1f);
-                Speed = 14f;
+                //Speed = 14f;
                 break;
             case RelationStatus.GOOD:
                 NewMaleDestroy();
                 ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
                 GameManager.Instance.UIManager.StatusTextAdjust("Good", Color.yellow);
-                CouplePositionAdjust(new Vector3(1.4f, -0.6f, 0), new Vector3(-1f, 0f, 0));
+                CouplePositionAdjust(new Vector3(1.4f, 0f, 0), new Vector3(-1f, 0f, 0));
                 gameObject.GetComponent<BoxCollider>().size = new Vector3(6f, 12f, 1f);
-                Speed = 16f;
+                //Speed = 16f;
                 break;
             case RelationStatus.EXCELLENT:
                 NewMaleDestroy();
@@ -164,7 +166,7 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.UIManager.Bar.color = Color.green;
                 GameManager.Instance.UIManager.StatusTextAdjust("Excellent", Color.green);
                 CouplePositionAdjust(new Vector3(0, 0, 0), new Vector3(0f, 3, 1.3f));
-                Speed = 18f;
+                //Speed = 18f;
                 break;
             default:
                 break;
@@ -205,6 +207,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Speed = 21f;
         RelationStatus = RelationStatus.NORMAL;
         GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
     }
@@ -221,6 +224,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            AdjustWalkRandomIndex();
             _lastFrameFingerPositionX = Input.mousePosition.x;
         }
         else if (Input.GetMouseButton(0))
@@ -281,7 +285,14 @@ public class PlayerController : MonoBehaviour
 
     public float AgeCalculator()
     {
-        var distance = gameObject.transform.position.z / GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+        var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+        var distance = gameObject.transform.position.z / finishPoz;
         return distance;
+    }
+
+    private void AdjustWalkRandomIndex()
+    {
+        WalkRandomIndex = UnityEngine.Random.Range(0, 2);
+        Debug.Log(WalkRandomIndex);
     }
 }

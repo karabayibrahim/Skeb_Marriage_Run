@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using System;
-public class GameManager :MonoSingleton<GameManager>
+using BzKovSoft.SmoothMeshConverter;
+using BzKovSoft.SmoothMeshConverter.Samples;
+public class GameManager : MonoSingleton<GameManager>
 {
     public PlayerController Player;
     public DataSystem Data;
@@ -13,17 +15,29 @@ public class GameManager :MonoSingleton<GameManager>
     public UIManager UIManager;
     public int GameStateIndex;
     public static Action GameStateChanged;
-
+    public static Action AgeChanged;
+    public TextData TextData;
+    public static bool StartStatus = false;
+    public bool AgeControl = false;
+    public ConvetModelSample MaleConvert;
+    public ConvetModelSample FemaleConvert;
     void Start()
     {
         Application.targetFrameRate = 60;
         CamAssigment();
+        AgeChanged += MaleConvert.InProgress;
+        AgeChanged += FemaleConvert.InProgress;
     }
 
+    private void OnDisable()
+    {
+        AgeChanged -= MaleConvert.InProgress;
+        AgeChanged -= FemaleConvert.InProgress;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void CamAssigment()
@@ -32,3 +46,5 @@ public class GameManager :MonoSingleton<GameManager>
         Cam.LookAt = Player.transform;
     }
 }
+
+

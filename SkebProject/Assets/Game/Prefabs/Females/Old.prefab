@@ -2903,7 +2903,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 96b84916b0b58cc4086d5ccf02f06450, type: 2}
+  - {fileID: 2100000, guid: f54d04eee60d22245b964984feaddfcf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4045,14 +4045,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6376859895506093570}
   - component: {fileID: 6376859895513590236}
-  - component: {fileID: 5346666604101256326}
+  - component: {fileID: 1430586056}
   m_Layer: 0
   m_Name: Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6376859895506093570
 Transform:
   m_ObjectHideFlags: 0
@@ -4061,7 +4061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6376859895506197090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.49, y: 0, z: 0}
+  m_LocalPosition: {x: 17.14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6376859895506093628}
@@ -4090,13 +4090,13 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 1bc9b8c8737fcfb43813570cccd238c9, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5346666604101256326
+--- !u!114 &1430586056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4108,7 +4108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c558a97017377364e9195f4bfe793f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anim: {fileID: 0}
+  _anim: {fileID: 6376859895513590236}
 --- !u!1 &6376859895506197092
 GameObject:
   m_ObjectHideFlags: 0

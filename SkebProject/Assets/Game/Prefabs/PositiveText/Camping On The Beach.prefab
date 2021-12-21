@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5061825809725660625
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 256634567862040277, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_Text
+      value: "Camping \nOn The Beach"
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040277, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_CharacterSize
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040277, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a27c5454e2fb9eb40a72c2389f1b9bb0,
+        type: 3}
+    - target: {fileID: 256634567862040277, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_Color.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040278, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256634567862040279, guid: cd6a3b7ccd4b8bc4babad963618219c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Camping On The Beach
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd6a3b7ccd4b8bc4babad963618219c2, type: 3}

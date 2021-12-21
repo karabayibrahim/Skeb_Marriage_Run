@@ -13,4 +13,9 @@ public enum HumanState
     ARGUING,
     SADWALK,
     SADIDLE,
+    TALK,
+    SHOULDER,
+    CLOSEARM,
+    RING,
+    HANDWALK,
 }

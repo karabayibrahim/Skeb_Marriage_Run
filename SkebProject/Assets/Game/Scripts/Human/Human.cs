@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public abstract class Human : MonoBehaviour
 {
     private HumanState _humanState;
@@ -18,7 +18,7 @@ public abstract class Human : MonoBehaviour
         }
         set
         {
-            if (HumanState==value)
+            if (HumanState == value)
             {
                 return;
             }
@@ -58,31 +58,52 @@ public abstract class Human : MonoBehaviour
             case HumanState.SADIDLE:
                 TrigAnimation("SadIdle");
                 break;
+            case HumanState.TALK:
+                TrigAnimation("Talk");
+                break;
+            case HumanState.SHOULDER:
+                TrigAnimation("Shoulder");
+                break;
+            case HumanState.CLOSEARM:
+                TrigAnimation("CloseArm");
+                break;
+            case HumanState.RING:
+                TrigAnimation("Ring");
+                break;
+            case HumanState.HANDWALK:
+                TrigAnimation("HandWalk");
+                break;
             default:
+
                 break;
         }
     }
 
     void Start()
     {
-        
+
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public  void TrigAnimation(string animName)
+    public void TrigAnimation(string animName)
     {
         _anim.CrossFade(animName, 0.05f);
     }
 
+    public void PositionChange(Vector3 _newposition)
+    {
+        transform.DOLocalMove(_newposition, 0.5f).SetEase(Ease.OutCubic);
+    }
+
     public abstract void WalkState();
     public abstract void IdleState();
-   
+
 
 
 

@@ -1,22 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class NewMale : Human
 {
     private GameObject newParticle;
 
     public override void IdleState()
     {
-        HumanState = HumanState.CARRYIDLE;
-        newParticle = Instantiate(GameManager.Instance.Data.Particles[6], transform.position, Quaternion.identity, transform);
-        newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
+        HumanState = HumanState.KISS;
+        transform.DOLocalMove(new Vector3(-3, 0, 0), 0.5f);
+        transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+        //HumanState = HumanState.CARRYIDLE;
+        //transform.DOLocalMove(new Vector3(-3, 0, 0), 0.5f);
+        //newParticle = Instantiate(GameManager.Instance.Data.Particles[6], transform.position, Quaternion.identity, transform);
+        //newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
     }
 
     public override void WalkState()
     {
         Destroy(newParticle);
         HumanState = HumanState.CARRY;
+        transform.DOLocalMove(new Vector3(-3, 0, 0),0.5f);
+        transform.DORotate(new Vector3(0,0, 0), 0.5f);
     }
 
     private void OnEnable()

@@ -25,17 +25,31 @@ MonoBehaviour:
   - {fileID: 6103527433813750261, guid: 9b3993f5f41f8a44aad523d39e895a63, type: 3}
   - {fileID: 259590319065271002, guid: a51ce6c89b972d9418e6c7f8f43c86a9, type: 3}
   CollectionObjsNegative:
-  - {fileID: 4638131363768164481, guid: 961803089e8e24f47b49800693ab5e87, type: 3}
+  - {fileID: 5981406479471954047, guid: af44c0da41a14c14ebe1be142c8ea14e, type: 3}
   - {fileID: 7466792135359560271, guid: e7b2cf8d1b314b9458e7271b766d5125, type: 3}
   - {fileID: 940215089718796170, guid: a2e9b48bf5fc7ce4795f8c95326635ee, type: 3}
   GateNegativeMaterials:
-  - {fileID: 2100000, guid: 7527e6b4e22e789419131b52685c0e7d, type: 2}
   - {fileID: 2100000, guid: f9fef0050a62e4b4d9e46b3672a72213, type: 2}
-  - {fileID: 2100000, guid: 312e84095b15ac04b8d140bbf99e414d, type: 2}
+  - {fileID: 2100000, guid: 9c4fe765819c67f4487ca1b22d62464a, type: 2}
+  - {fileID: 2100000, guid: 57df22f5eb615e342b5a6c19aba14026, type: 2}
+  - {fileID: 2100000, guid: 1b43bd10165dd454eb6de4707dd7edb6, type: 2}
+  - {fileID: 2100000, guid: b30958b5b6855a740acdf96726702570, type: 2}
+  - {fileID: 2100000, guid: 49687b285988abd47a0d37fa1ca274f6, type: 2}
+  - {fileID: 2100000, guid: 2cc32dfa2330bf84385aa053b7c6deb5, type: 2}
+  - {fileID: 2100000, guid: 0d518a4e398d5d3469a8bb09308c2385, type: 2}
+  - {fileID: 2100000, guid: fd32da408edbfd0419b11bd3697f61f6, type: 2}
+  - {fileID: 2100000, guid: 7f604776a52dae3419d820777ce974f1, type: 2}
   GatePositiveMaterials:
-  - {fileID: 2100000, guid: 6371c5d32fac57140888da115b978de6, type: 2}
-  - {fileID: 2100000, guid: cc25d05c74d444f4588042a9bcbba9ff, type: 2}
   - {fileID: 2100000, guid: 13e5e223d55abd8498c46a336295a778, type: 2}
+  - {fileID: 2100000, guid: 94990cfe1a0a77041834691ed21659da, type: 2}
+  - {fileID: 2100000, guid: 8b1b2f5fa94f9c048a804ade79c0efcb, type: 2}
+  - {fileID: 2100000, guid: 0e3676d6b38f4f646b6fc9531a19e137, type: 2}
+  - {fileID: 2100000, guid: 7fac4e6137be25544a33b71ec1c5a136, type: 2}
+  - {fileID: 2100000, guid: ad8d32bad658bba4d843a1a23b0a036c, type: 2}
+  - {fileID: 2100000, guid: 2f3410c2b11eae041b0c1e03a901ec15, type: 2}
+  - {fileID: 2100000, guid: 6aee810b65d119845baf0a96ad204433, type: 2}
+  - {fileID: 2100000, guid: 48bf9a26fa0c70c4d8bb664264abef42, type: 2}
+  - {fileID: 2100000, guid: 035f4bc424f390a4391728cf04864b99, type: 2}
   Particles:
   - {fileID: 7851418945745292251, guid: 6bf35b6ca61d9154382b0f522e476c69, type: 3}
   - {fileID: 906972048968573904, guid: 724520b260814c34987cbba33f4e7f2a, type: 3}
@@ -45,4 +59,5 @@ MonoBehaviour:
   - {fileID: 3602162303977616296, guid: b9d5e1a7a7648ef4788ad894321b35a9, type: 3}
   - {fileID: 8260990905438998322, guid: 48d7f63fd00732240a62f7c63e0bc2a2, type: 3}
   - {fileID: 2823909312363037197, guid: e61b9fcea78c381498cbd2af27ba488c, type: 3}
+  - {fileID: 5379388515883311687, guid: 7f7902bbf7bef3e4180f501a73c4336c, type: 3}
   NewMale: {fileID: 2235438740705565791, guid: 629f4a38bb4424d42b9ada805f800034, type: 3}
