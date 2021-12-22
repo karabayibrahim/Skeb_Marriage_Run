@@ -21,6 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
     public bool AgeControl = false;
     public ConvetModelSample MaleConvert;
     public ConvetModelSample FemaleConvert;
+    public TextMesh AgeCount;
     void Start()
     {
         Application.targetFrameRate = 60;

@@ -16,11 +16,14 @@ public class PlayerController : MonoBehaviour
     public static Action WalkAction;
     public static Action IdleAction;
     public int WalkRandomIndex;
+    public bool IsClampRight = false;
+    public bool IsClampLeft = false;
     public float MoveFactorX => _moveFactorX;
-    
+
     private float _reletionCount;
     private float _lastFrameFingerPositionX;
     private float _moveFactorX;
+
     public float RelationCount
     {
         get
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnProgressBarControl()
     {
-        if (RelationCount>=0)
+        if (RelationCount >= 0)
         {
             GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
         }
@@ -53,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnRelationCountControl()
     {
-        if (RelationCount<-100)
+        if (RelationCount < -100)
         {
             RelationCount = -100;
         }
@@ -76,11 +79,11 @@ public class PlayerController : MonoBehaviour
         {
             RelationStatus = RelationStatus.GOOD;
         }
-        else if (RelationCount>=75 && RelationCount <100)
+        else if (RelationCount >= 75 && RelationCount < 100)
         {
             RelationStatus = RelationStatus.EXCELLENT;
         }
-        else if (RelationCount>=100)
+        else if (RelationCount >= 100)
         {
             RelationCount = 100;
         }
@@ -127,7 +130,7 @@ public class PlayerController : MonoBehaviour
         switch (RelationStatus)
         {
             case RelationStatus.TERRIBLE:
-                NewMale=NewHumanSpawn();
+                NewMale = NewHumanSpawn();
                 ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.black;
                 GameManager.Instance.UIManager.StatusTextAdjust("Terrible", Color.black);
@@ -180,7 +183,7 @@ public class PlayerController : MonoBehaviour
             case AgeStatus.YOUNG:
                 GameManager.Instance.GameStateIndex = 0;
                 GameManager.GameStateChanged?.Invoke();
-                CharacterChanged(Male.transform.position,Female.transform.position);
+                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             case AgeStatus.ADULT:
                 GameManager.Instance.GameStateIndex = 1;
@@ -203,6 +206,18 @@ public class PlayerController : MonoBehaviour
         {
             other.gameObject.GetComponent<ICollectable>().DoCollect();
         }
+        if (other.gameObject.GetComponent<IClampCollect>() != null)
+        {
+            other.gameObject.GetComponent<IClampCollect>().DoClampCollect(other.ClosestPointOnBounds(transform.position));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<IClampCollect>() != null)
+        {
+            other.gameObject.GetComponent<IClampCollect>().DoClampCollectExit(other.ClosestPointOnBounds(transform.position));
+        }
     }
 
     void Start()
@@ -216,9 +231,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MoveSystem();
-        float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
-        transform.Translate(swerveAmount, 0, 0);
     }
+
 
     private void MoveSystem()
     {
@@ -229,10 +243,28 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            _moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
-            _lastFrameFingerPositionX = Input.mousePosition.x;
             transform.Translate(0, 0, Speed * Time.deltaTime);
-            WalkAction?.Invoke();
+            _moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
+            if (IsClampRight)
+            {
+                if (MoveFactorX <= 0)
+                {
+                    MoveControlSystem();
+                }
+            }
+            else if (IsClampLeft)
+            {
+                if (MoveFactorX >= 0)
+                {
+                    MoveControlSystem();
+                }
+            }
+            else
+            {
+                MoveControlSystem();
+            }
+
+
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -241,17 +273,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CharacterChanged(Vector3 _malePoz,Vector3 _femalePoz)
+    private void CharacterChanged(Vector3 _malePoz, Vector3 _femalePoz)
     {
-        var maleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_malePoz.x, _malePoz.y+5f, _malePoz.z), Quaternion.identity,transform);
-        var femaleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_femalePoz.x, _femalePoz.y+5f,_femalePoz.z), Quaternion.identity,transform);
-        Destroy(maleParticle,5f);
+        var maleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_malePoz.x, _malePoz.y + 5f, _malePoz.z), Quaternion.identity, transform);
+        var femaleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_femalePoz.x, _femalePoz.y + 5f, _femalePoz.z), Quaternion.identity, transform);
+        Destroy(maleParticle, 5f);
         Destroy(femaleParticle, 5f);
         Destroy(Male.gameObject);
         Destroy(Female.gameObject);
-        Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity,transform);
+        Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity, transform);
         Male.transform.position = _malePoz;
-        Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity,transform);
+        Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity, transform);
         Female.transform.position = _femalePoz;
     }
 
@@ -263,14 +295,14 @@ public class PlayerController : MonoBehaviour
 
     private Human NewHumanSpawn()
     {
-        var _newHuman=Instantiate(GameManager.Instance.Data.NewMale, transform.position, Quaternion.identity,transform);
-        _newHuman.transform.localPosition = new Vector3(3, 0, 0);
+        var _newHuman = Instantiate(GameManager.Instance.Data.NewMale, transform.position, Quaternion.identity, transform);
+        _newHuman.transform.localPosition = new Vector3(-3, 0, 0);
         return _newHuman;
     }
 
     private void NewMaleDestroy()
     {
-        if (NewMale!=null)
+        if (NewMale != null)
         {
             Destroy(NewMale.gameObject);
         }
@@ -293,6 +325,17 @@ public class PlayerController : MonoBehaviour
     private void AdjustWalkRandomIndex()
     {
         WalkRandomIndex = UnityEngine.Random.Range(0, 2);
-        Debug.Log(WalkRandomIndex);
+        //Debug.Log(WalkRandomIndex);
     }
+
+    private void MoveControlSystem()
+    {
+        _lastFrameFingerPositionX = Input.mousePosition.x;
+        float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
+        transform.Translate(swerveAmount, 0, 0);
+        WalkAction?.Invoke();
+    }
+
+
+
 }

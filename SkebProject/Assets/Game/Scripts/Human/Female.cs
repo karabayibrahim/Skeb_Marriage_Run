@@ -31,6 +31,8 @@ public class Female : Human
     void Update()
     {
         _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
+        var age = (int)(GameManager.Instance.Player.AgeCalculator()*70)+18;
+        GameManager.Instance.AgeCount.text = "Age:" + age;
     }
 
     public override void WalkState()
