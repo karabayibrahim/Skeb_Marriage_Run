@@ -31,8 +31,16 @@ public class Female : Human
     void Update()
     {
         _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
-        var age = (int)(GameManager.Instance.Player.AgeCalculator()*70)+18;
-        GameManager.Instance.AgeCount.text = "Age:" + age;
+        if (GameManager.Instance.Player.AgeCalculator()>=0)
+        {
+            var age = (int)(GameManager.Instance.Player.AgeCalculator() * 70) + 18;
+            GameManager.Instance.AgeCount.text = "Age:" + age;
+        }
+        else
+        {
+            GameManager.Instance.AgeCount.text = "Age:" + 18;
+        }
+        
     }
 
     public override void WalkState()
@@ -132,6 +140,8 @@ public class Female : Human
                 {
                     transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
                     transform.DOLocalMove(new Vector3(-5.5f,0,-0.8f), 0.5f);
+                    newParticle = Instantiate(GameManager.Instance.Data.Particles[2], transform.position, Quaternion.identity, transform);
+                    newParticle.transform.localPosition = new Vector3(-5.5f, 10f, -1.2f);
                 }
 
                 break;
@@ -174,6 +184,8 @@ public class Female : Human
             case HumanState.RING:
                 transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
                 transform.DOLocalMove(new Vector3(-4f, 0, 0), 0.5f);
+                newParticle = Instantiate(GameManager.Instance.Data.Particles[9], transform.position, Quaternion.identity, transform);
+                newParticle.transform.localPosition = new Vector3(-4, 11f, -1.2f);
                 break;
             case HumanState.HANDWALK:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);

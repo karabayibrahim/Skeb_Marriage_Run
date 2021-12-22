@@ -11,6 +11,8 @@ public class NewMale : Human
         HumanState = HumanState.KISS;
         transform.DOLocalMove(new Vector3(-3, 0, 0), 0.5f);
         transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+        newParticle = Instantiate(GameManager.Instance.Data.Particles[2], transform.position, Quaternion.identity, transform);
+        newParticle.transform.localPosition = new Vector3(-3, 13.5f, -0.5f);
         //HumanState = HumanState.CARRYIDLE;
         //transform.DOLocalMove(new Vector3(-3, 0, 0), 0.5f);
         //newParticle = Instantiate(GameManager.Instance.Data.Particles[6], transform.position, Quaternion.identity, transform);

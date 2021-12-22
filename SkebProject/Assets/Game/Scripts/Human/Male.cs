@@ -157,7 +157,7 @@ public class Male : Human
             case HumanState.SADIDLE:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 newParticle = Instantiate(GameManager.Instance.Data.Particles[5], transform.position, Quaternion.identity, transform);
-                newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
+                newParticle.transform.localPosition = new Vector3(0, 13f, -1.2f);
                 break;
             case HumanState.TALK:
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
@@ -173,6 +173,8 @@ public class Male : Human
                 break;
             case HumanState.RING:
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                newParticle = Instantiate(GameManager.Instance.Data.Particles[10], transform.position, Quaternion.identity, transform);
+                newParticle.transform.localPosition = new Vector3(-4, 11.5f, -1.5f);
                 break;
             case HumanState.HANDWALK:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);

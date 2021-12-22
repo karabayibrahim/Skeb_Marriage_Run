@@ -25,6 +25,7 @@ public class GataNegative : MonoBehaviour,ICollectable
         //}
         Destroy(MySprite);
         Destroy(MyParticle);
+        Destroy(MyText);
     }
 
     // Start is called before the first frame update

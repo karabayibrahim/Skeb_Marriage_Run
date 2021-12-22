@@ -14164,7 +14164,7 @@ Transform:
   m_GameObject: {fileID: 8028716900323592846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5, y: 8.09, z: 100.53}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7557323878429460491}
   - {fileID: 947351805914440540}
@@ -14187,6 +14187,7 @@ MonoBehaviour:
   IncreaseAmount: 15
   MySprite: {fileID: 8028716901733421912}
   MyParticle: {fileID: 947351805914738662}
+  MyText: {fileID: 0}
 --- !u!65 &8028716900323592845
 BoxCollider:
   m_ObjectHideFlags: 0
