@@ -6,9 +6,24 @@ public class UIManager : MonoBehaviour
 {
     public Image Bar;
     public Text StatusText;
+    [Header("StartPanel")]
+    public GameObject StartPanel;
+    public Button StartPlayButton;
+    [Header("InGamePanel")]
+    public GameObject InGamePanel;
+    public Text LevelText;
+    public Button RestartButton;
+
+
     void Start()
     {
-        
+        StartPlayButton.onClick.AddListener(StartStatus);
+        var index=GameManager.Instance.LevelIndex+1;
+        LevelText.text = index.ToString();
+    }
+    private void OnDisable()
+    {
+        StartPlayButton.onClick.RemoveListener(StartStatus);
     }
 
     // Update is called once per frame
@@ -21,5 +36,11 @@ public class UIManager : MonoBehaviour
     {
         StatusText.text = _text;
         StatusText.color = _color;
+    }
+
+    private void StartStatus()
+    {
+        StartPanel.SetActive(false);
+        InGamePanel.SetActive(true);
     }
 }

@@ -18,4 +18,5 @@ public enum HumanState
     CLOSEARM,
     RING,
     HANDWALK,
+    TURN,
 }

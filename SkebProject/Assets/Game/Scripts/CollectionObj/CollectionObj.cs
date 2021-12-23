@@ -10,10 +10,14 @@ public class CollectionObj : MonoBehaviour, ICollectable
         if (gameObject.tag=="Positive")
         {
             GameManager.Instance.Player.RelationCount+=5;
+            var newParticle = Instantiate(GameManager.Instance.Data.Particles[11], transform.position, Quaternion.identity);
+            Destroy(newParticle, 2f);
         }
         else
         {
             GameManager.Instance.Player.RelationCount-=5;
+            var newParticle = Instantiate(GameManager.Instance.Data.Particles[12], transform.position, Quaternion.identity);
+            Destroy(newParticle, 2f);
         }
         Destroy(gameObject);
 

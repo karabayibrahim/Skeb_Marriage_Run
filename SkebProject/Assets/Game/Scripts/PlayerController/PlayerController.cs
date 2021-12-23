@@ -317,9 +317,19 @@ public class PlayerController : MonoBehaviour
 
     public float AgeCalculator()
     {
-        var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
-        var distance = gameObject.transform.position.z / finishPoz;
-        return distance;
+        if (GameManager.Instance.CurrentLevel.Finish!=null)
+        {
+            var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+            var distance = gameObject.transform.position.z / finishPoz;
+            return distance;
+        }
+        else
+        {
+            var distance = 0;
+            return distance;
+        }
+        
+        
     }
 
     private void AdjustWalkRandomIndex()

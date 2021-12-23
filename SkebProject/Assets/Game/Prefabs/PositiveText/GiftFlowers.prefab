@@ -92,4 +92,4 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: a27c5454e2fb9eb40a72c2389f1b9bb0, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295

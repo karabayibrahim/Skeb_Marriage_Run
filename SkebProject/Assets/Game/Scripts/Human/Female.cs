@@ -6,6 +6,8 @@ public class Female : Human
 {
 
     private GameObject newParticle;
+    public HumanState TempHumanState;
+    public bool IsTurn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +36,11 @@ public class Female : Human
         if (GameManager.Instance.Player.AgeCalculator()>=0)
         {
             var age = (int)(GameManager.Instance.Player.AgeCalculator() * 70) + 18;
-            GameManager.Instance.AgeCount.text = "Age:" + age;
+            GameManager.Instance.AgeCount.text = "AGE:" + age;
         }
         else
         {
-            GameManager.Instance.AgeCount.text = "Age:" + 18;
+            GameManager.Instance.AgeCount.text = "AGE:" + 18;
         }
         
     }
@@ -47,40 +49,44 @@ public class Female : Human
     {
         Destroy(newParticle);
         var Player = GameManager.Instance.Player;
-        if (Player.RelationStatus == RelationStatus.EXCELLENT)
+        if (!IsTurn)
         {
-            if (Player.WalkRandomIndex == 0)
+            if (Player.RelationStatus == RelationStatus.EXCELLENT)
+            {
+                if (Player.WalkRandomIndex == 0)
+                {
+                    HumanState = HumanState.SIT;
+                    AnimationPosition(HumanState.SIT);
+                }
+                else if (Player.WalkRandomIndex == 1)
+                {
+                    HumanState = HumanState.SHOULDER;
+                    AnimationPosition(HumanState.SHOULDER);
+                }
+
+            }
+            else if (Player.RelationStatus == RelationStatus.TERRIBLE)
             {
                 HumanState = HumanState.SIT;
                 AnimationPosition(HumanState.SIT);
             }
-            else if (Player.WalkRandomIndex == 1)
+            else if (Player.RelationStatus == RelationStatus.BAD)
             {
-                HumanState = HumanState.SHOULDER;
-                AnimationPosition(HumanState.SHOULDER);
+                HumanState = HumanState.CLOSEARM;
+                AnimationPosition(HumanState.CLOSEARM);
             }
-
+            else if (Player.RelationStatus == RelationStatus.GOOD)
+            {
+                HumanState = HumanState.HANDWALK;
+                AnimationPosition(HumanState.HANDWALK);
+            }
+            else
+            {
+                HumanState = HumanState.WALK;
+                AnimationPosition(HumanState.WALK);
+            }
         }
-        else if (Player.RelationStatus == RelationStatus.TERRIBLE)
-        {
-            HumanState = HumanState.SIT;
-            AnimationPosition(HumanState.SIT);
-        }
-        else if (Player.RelationStatus == RelationStatus.BAD)
-        {
-            HumanState = HumanState.CLOSEARM;
-            AnimationPosition(HumanState.CLOSEARM);
-        }
-        else if (Player.RelationStatus == RelationStatus.GOOD)
-        {
-            HumanState = HumanState.HANDWALK;
-            AnimationPosition(HumanState.HANDWALK);
-        }
-        else
-        {
-            HumanState = HumanState.WALK;
-            AnimationPosition(HumanState.WALK);
-        }
+        
     }
 
     public override void IdleState()
@@ -117,7 +123,7 @@ public class Female : Human
         }
     }
 
-    private void AnimationPosition(HumanState humanState)
+    public void AnimationPosition(HumanState humanState)
     {
         var Player = GameManager.Instance.Player;
         switch (humanState)
@@ -191,6 +197,9 @@ public class Female : Human
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 transform.DOLocalMove(new Vector3(-1.7f, 0f, 0), 0.5f);
                 break;
+            case HumanState.TURN:
+                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                break;
             default:
                 break;
         }
@@ -221,4 +230,17 @@ public class Female : Human
         }
     }
 
+    public void TrigAnimationTime(float time)
+    {
+        TempHumanState = HumanState;
+        Debug.Log(TempHumanState);
+        StartCoroutine(TrigTime(time));
+    }
+
+    private IEnumerator TrigTime(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        HumanState =TempHumanState;
+        IsTurn = false;
+    }
 }

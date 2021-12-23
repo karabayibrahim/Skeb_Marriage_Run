@@ -73,6 +73,9 @@ public abstract class Human : MonoBehaviour
             case HumanState.HANDWALK:
                 TrigAnimation("HandWalk");
                 break;
+            case HumanState.TURN:
+                TrigAnimation("Turn");
+                break;
             default:
 
                 break;

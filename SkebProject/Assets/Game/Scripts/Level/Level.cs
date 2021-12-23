@@ -5,27 +5,10 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    private int _levelIndex;
     public Finish Finish;
-    public int LevelIndex
-    {
-        get
-        {
-            return _levelIndex;
-        }
-        set
-        {
-            if (LevelIndex==value)
-            {
-                return;
-            }
-            _levelIndex = value;
-            OnLevelIndexChanged();
 
-        }
-    }
 
-    public void OnLevelIndexChanged()
+    private void OnEnable()
     {
         
     }

@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4454696702490297212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023165724163511775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &5764493414505014052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16,6 +31,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CharacterSize
       value: 0.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353019272440936185, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_FontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2353019272440936186, guid: f9e707609309fda4fbcc1a2ce99f6d54,
         type: 3}
@@ -77,5 +97,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Don\u2019t care"
       objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696622826116992310, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+        type: 3}
+      propertyPath: m_UseGraphicAlpha
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e707609309fda4fbcc1a2ce99f6d54, type: 3}
+--- !u!1 &8023165724163511775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2353019272440936187, guid: f9e707609309fda4fbcc1a2ce99f6d54,
+    type: 3}
+  m_PrefabInstance: {fileID: 5764493414505014052}
+  m_PrefabAsset: {fileID: 0}

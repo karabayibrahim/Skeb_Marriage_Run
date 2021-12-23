@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-753956058053940505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4335209527621467728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &4322993467769890731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +22,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -2323682230247185866, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_UseGraphicAlpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 565089324614687225, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
         type: 3}
       propertyPath: m_Text
@@ -16,6 +61,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CharacterSize
       value: 0.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 565089324614687225, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+        type: 3}
+      propertyPath: m_FontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 565089324614687226, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
         type: 3}
@@ -79,3 +129,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 285a6ae5e6a19c8408143ee31c30f4bb, type: 3}
+--- !u!1 &4335209527621467728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 565089324614687227, guid: 285a6ae5e6a19c8408143ee31c30f4bb,
+    type: 3}
+  m_PrefabInstance: {fileID: 4322993467769890731}
+  m_PrefabAsset: {fileID: 0}

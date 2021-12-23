@@ -8,24 +8,16 @@ public class GataNegative : MonoBehaviour,ICollectable
     public GameObject MySprite;
     public GameObject MyParticle;
     public GameObject MyText;
+    public GameObject ArkaPlan;
     public void DoCollect()
     {
         GameManager.Instance.Player.RelationCount -= IncreaseAmount;
-        //var Player = GameManager.Instance.Player;
-        //switch (Player.AgeStatus)
-        //{
-        //    case AgeStatus.YOUNG:
-        //        Player.AgeStatus = AgeStatus.ADULT;
-        //        break;
-        //    case AgeStatus.ADULT:
-        //        Player.AgeStatus = AgeStatus.OLD;
-        //        break;
-        //    default:
-        //        break;
-        //}
+        var newParticle = Instantiate(GameManager.Instance.Data.Particles[13], transform.position, Quaternion.identity);
+        Destroy(newParticle, 2f);
         Destroy(MySprite);
         Destroy(MyParticle);
         Destroy(MyText);
+        Destroy(ArkaPlan);
     }
 
     // Start is called before the first frame update

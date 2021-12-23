@@ -9,7 +9,11 @@ public class Male : Human
     private bool _adultControl = false;
     private bool _oldControl = false;
 
+
+    public HumanState TempHumanState;
     public GameObject Ring;
+    public bool IsTurn = false;
+
     void Start()
     {
         base._anim = GetComponent<Animator>();
@@ -35,12 +39,12 @@ public class Male : Human
     void Update()
     {
         _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
-        if (GameManager.Instance.Player.AgeCalculator()>=0.3f&&!_adultControl)
+        if (GameManager.Instance.Player.AgeCalculator() >= 0.3f && !_adultControl)
         {
             GameManager.AgeChanged?.Invoke();
             _adultControl = true;
         }
-        else if (GameManager.Instance.Player.AgeCalculator() >= 0.6f&&!_oldControl)
+        else if (GameManager.Instance.Player.AgeCalculator() >= 0.6f && !_oldControl)
         {
             GameManager.AgeChanged?.Invoke();
             _oldControl = true;
@@ -51,40 +55,44 @@ public class Male : Human
         Ring.SetActive(false);
         Destroy(newParticle);
         var Player = GameManager.Instance.Player;
-        if (Player.RelationStatus == RelationStatus.EXCELLENT)
+        if (!IsTurn)
         {
-            if (Player.WalkRandomIndex==0)
+            if (Player.RelationStatus == RelationStatus.EXCELLENT)
             {
-                HumanState = HumanState.CARRY;
-                AnimationPosition(HumanState.CARRY);
+                if (Player.WalkRandomIndex == 0)
+                {
+                    HumanState = HumanState.CARRY;
+                    AnimationPosition(HumanState.CARRY);
+                }
+                else if (Player.WalkRandomIndex == 1)
+                {
+                    HumanState = HumanState.SHOULDER;
+                    AnimationPosition(HumanState.SHOULDER);
+                }
+
             }
-            else if (Player.WalkRandomIndex==1)
+            else if (Player.RelationStatus == RelationStatus.TERRIBLE)
             {
-                HumanState = HumanState.SHOULDER;
-                AnimationPosition(HumanState.SHOULDER);
+                HumanState = HumanState.SADWALK;
+                AnimationPosition(HumanState.SADWALK);
             }
-            
+            else if (Player.RelationStatus == RelationStatus.BAD)
+            {
+                HumanState = HumanState.CLOSEARM;
+                AnimationPosition(HumanState.CLOSEARM);
+            }
+            else if (Player.RelationStatus == RelationStatus.GOOD)
+            {
+                HumanState = HumanState.HANDWALK;
+                AnimationPosition(HumanState.HANDWALK);
+            }
+            else
+            {
+                HumanState = HumanState.WALK;
+                AnimationPosition(HumanState.WALK);
+            }
         }
-        else if (Player.RelationStatus==RelationStatus.TERRIBLE)
-        {
-            HumanState = HumanState.SADWALK;
-            AnimationPosition(HumanState.SADWALK);
-        }
-        else if (Player.RelationStatus==RelationStatus.BAD)
-        {
-            HumanState = HumanState.CLOSEARM;
-            AnimationPosition(HumanState.CLOSEARM);
-        }
-        else if (Player.RelationStatus==RelationStatus.GOOD)
-        {
-            HumanState = HumanState.HANDWALK;
-            AnimationPosition(HumanState.HANDWALK);
-        }
-        else
-        {
-            HumanState = HumanState.WALK;
-            AnimationPosition(HumanState.WALK);
-        }
+
     }
 
 
@@ -125,12 +133,12 @@ public class Male : Human
         }
     }
 
-    private void AnimationPosition(HumanState humanState)
+    public void AnimationPosition(HumanState humanState)
     {
         switch (humanState)
         {
             case HumanState.IDLE:
-                transform.DORotate(new Vector3(0,0, 0), 0.5f);
+                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 break;
             case HumanState.WALK:
                 transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
@@ -166,7 +174,7 @@ public class Male : Human
                 newParticle.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
                 break;
             case HumanState.SHOULDER:
-                transform.DORotate(new Vector3(0, 0, 0),0.5f);
+                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 break;
             case HumanState.CLOSEARM:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
@@ -209,7 +217,19 @@ public class Male : Human
         }
     }
 
+    public void TrigAnimationTime(float time)
+    {
+        TempHumanState = HumanState;
+        Debug.Log(TempHumanState);
+        StartCoroutine(TrigTime(time));
+    }
 
+    private IEnumerator TrigTime(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        HumanState = TempHumanState;
+        IsTurn = false;
+    }
 
 
 

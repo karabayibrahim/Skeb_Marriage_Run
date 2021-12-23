@@ -7,24 +7,20 @@ public class GatePositive : MonoBehaviour, ICollectable
     public GameObject MySprite;
     public GameObject MyParticle;
     public GameObject MyText;
+    public GameObject ArkaPlan;
     public void DoCollect()
     {
-        GameManager.Instance.Player.RelationCount += IncreaseAmount;
-        //var Player = GameManager.Instance.Player;
-        //switch (Player.AgeStatus)
-        //{
-        //    case AgeStatus.YOUNG:
-        //        Player.AgeStatus = AgeStatus.ADULT;
-        //        break;
-        //    case AgeStatus.ADULT:
-        //        Player.AgeStatus = AgeStatus.OLD;
-        //        break;
-        //    default:
-        //        break;
-        //}
+        gameObject.GetComponent<Collider>().enabled = false;
+        var Player = GameManager.Instance.Player;
+        FemaleTurnAdjust();
+        MaleTurnAdjust();
+        Player.RelationCount += IncreaseAmount;
+        var newParticle = Instantiate(GameManager.Instance.Data.Particles[14], transform.position, Quaternion.identity);
+        Destroy(newParticle, 2f);
         Destroy(MySprite);
         Destroy(MyParticle);
         Destroy(MyText);
+        Destroy(ArkaPlan);
     }
 
     // Start is called before the first frame update
@@ -44,5 +40,23 @@ public class GatePositive : MonoBehaviour, ICollectable
         newText.transform.localPosition = new Vector3(0, 6f, 0);
         MyText = newText;
         MySprite.GetComponent<MeshRenderer>().material = GameManager.Instance.Data.GatePositiveMaterials[index];
+    }
+
+    private void FemaleTurnAdjust()
+    {
+        var Player = GameManager.Instance.Player;
+        Player.Female.GetComponent<Female>().TrigAnimationTime(0.5f);
+        Player.Female.GetComponent<Female>().IsTurn = true;
+        Player.Female.GetComponent<Female>().HumanState = HumanState.TURN;
+        Player.Female.GetComponent<Female>().AnimationPosition(HumanState.TURN);
+    }
+
+    private void MaleTurnAdjust()
+    {
+        var Player = GameManager.Instance.Player;
+        Player.Male.GetComponent<Male>().TrigAnimationTime(0.5f);
+        Player.Male.GetComponent<Male>().IsTurn = true;
+        Player.Male.GetComponent<Male>().HumanState = HumanState.TURN;
+        Player.Male.GetComponent<Male>().AnimationPosition(HumanState.TURN);
     }
 }
