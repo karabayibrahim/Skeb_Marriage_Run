@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Human Female;
     public Human NewMale;
     public float Speed;
-    public float swerveSpeed;
+    public float HorizontalSpeed;
     public static Action WalkAction;
     public static Action IdleAction;
     public int WalkRandomIndex;
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float _reletionCount;
     private float _lastFrameFingerPositionX;
     private float _moveFactorX;
+    private float _movementClamp = 22f;
 
     public float RelationCount
     {
@@ -231,6 +232,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MoveSystem();
+        HorizontalMovement();
     }
 
 
@@ -244,25 +246,26 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             transform.Translate(0, 0, Speed * Time.deltaTime);
-            _moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
-            if (IsClampRight)
-            {
-                if (MoveFactorX <= 0)
-                {
-                    MoveControlSystem();
-                }
-            }
-            else if (IsClampLeft)
-            {
-                if (MoveFactorX >= 0)
-                {
-                    MoveControlSystem();
-                }
-            }
-            else
-            {
-                MoveControlSystem();
-            }
+            MoveControlSystem();
+            //_moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
+            //if (IsClampRight)
+            //{
+            //    if (MoveFactorX <= 0)
+            //    {
+            //        MoveControlSystem();
+            //    }
+            //}
+            //else if (IsClampLeft)
+            //{
+            //    if (MoveFactorX >= 0)
+            //    {
+            //        MoveControlSystem();
+            //    }
+            //}
+            //else
+            //{
+            //    MoveControlSystem();
+            //}
 
 
         }
@@ -340,10 +343,34 @@ public class PlayerController : MonoBehaviour
 
     private void MoveControlSystem()
     {
-        _lastFrameFingerPositionX = Input.mousePosition.x;
-        float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
-        transform.Translate(swerveAmount, 0, 0);
+        //Vector2 touchPos = _inputData.touchPosition;
+        //if (touchPos != Vector2.zero)
+        //{
+        //    transform.Translate(touchPos.x * (Speed / 100) * Time.deltaTime, 0, 0);
+        //    //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_movementClamp, _movementClamp), transform.position.y, transform.position.z);
+        //}
+        //_lastFrameFingerPositionX = Input.mousePosition.x;
+        //float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
+        //transform.Translate(swerveAmount, 0, 0);
         WalkAction?.Invoke();
+    }
+
+    private void HorizontalMovement()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch _theTouch = Input.GetTouch(0);
+
+            if (_theTouch.phase == TouchPhase.Moved)
+            {
+                Vector2 touchPos = _theTouch.deltaPosition;
+                if (touchPos != Vector2.zero)
+                {
+                    transform.Translate(touchPos.x * (HorizontalSpeed/ 100) * Time.deltaTime, 0, 0);
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_movementClamp, _movementClamp), transform.position.y, transform.position.z);
+                }
+            }
+        }
     }
 
 

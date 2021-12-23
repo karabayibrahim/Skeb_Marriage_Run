@@ -14190,6 +14190,7 @@ MonoBehaviour:
   MyParticle: {fileID: 947351805914738662}
   MyText: {fileID: 0}
   ArkaPlan: {fileID: 9041635121260805531}
+  MaterialObject: {fileID: 7181784185276584625}
 --- !u!65 &8028716900323592845
 BoxCollider:
   m_ObjectHideFlags: 0

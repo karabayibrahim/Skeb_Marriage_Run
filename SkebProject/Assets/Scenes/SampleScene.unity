@@ -5917,7 +5917,7 @@ MonoBehaviour:
   Female: {fileID: 877732261831428813}
   NewMale: {fileID: 0}
   Speed: 0
-  swerveSpeed: 1
+  HorizontalSpeed: 200
   WalkRandomIndex: 0
   IsClampRight: 0
   IsClampLeft: 0

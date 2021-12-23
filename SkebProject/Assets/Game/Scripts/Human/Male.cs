@@ -220,7 +220,6 @@ public class Male : Human
     public void TrigAnimationTime(float time)
     {
         TempHumanState = HumanState;
-        Debug.Log(TempHumanState);
         StartCoroutine(TrigTime(time));
     }
 

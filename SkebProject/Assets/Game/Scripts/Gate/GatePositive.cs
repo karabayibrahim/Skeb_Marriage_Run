@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 public class GatePositive : MonoBehaviour, ICollectable
 {
     public float IncreaseAmount;
@@ -8,6 +9,7 @@ public class GatePositive : MonoBehaviour, ICollectable
     public GameObject MyParticle;
     public GameObject MyText;
     public GameObject ArkaPlan;
+    public GameObject MaterialObject;
     public void DoCollect()
     {
         gameObject.GetComponent<Collider>().enabled = false;
@@ -32,6 +34,9 @@ public class GatePositive : MonoBehaviour, ICollectable
     // Update is called once per frame
     void Update()
     {
+        PlayerPositionControl();
+        //Debug.Log(Vector3.Distance(transform.position.normalized, GameManager.Instance.Player.transform.position.normalized));
+        
     }
     private void AdjustTextObj()
     {
@@ -58,5 +63,20 @@ public class GatePositive : MonoBehaviour, ICollectable
         Player.Male.GetComponent<Male>().IsTurn = true;
         Player.Male.GetComponent<Male>().HumanState = HumanState.TURN;
         Player.Male.GetComponent<Male>().AnimationPosition(HumanState.TURN);
+    }
+
+    private void PlayerPositionControl()
+    {
+        if (transform.position.z<GameManager.Instance.Player.transform.position.z)
+        {
+            Debug.Log("Yakın");
+            var newMaterial = GameManager.Instance.Data.AlphaMat;
+            var alpha = 0;
+            //DOTween.To(() => alpha, x => alpha = x, 0, 0.5f);
+            newMaterial.color =new Color(MaterialObject.GetComponent<Renderer>().material.color.r, MaterialObject.GetComponent<Renderer>().material.color.g, MaterialObject.GetComponent<Renderer>().material.color.b,alpha);
+            MaterialObject.GetComponent<MeshRenderer>().material =newMaterial;
+            Destroy(this);
+            
+        }
     }
 }

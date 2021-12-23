@@ -67,3 +67,4 @@ MonoBehaviour:
   - {fileID: 1421230531092383616, guid: 8da84fb553129c94d82dc7ec4e73c95b, type: 3}
   - {fileID: 9170174243651405052, guid: b2e638b2132efb94e97b9bc69827ed98, type: 3}
   NewMale: {fileID: 2235438740705565791, guid: 629f4a38bb4424d42b9ada805f800034, type: 3}
+  AlphaMat: {fileID: 2100000, guid: 64751c587ac926743ae31de3502955b6, type: 2}
