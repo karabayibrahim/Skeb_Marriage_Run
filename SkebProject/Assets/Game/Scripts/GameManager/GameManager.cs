@@ -16,6 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int GameStateIndex;
     public static Action GameStateChanged;
     public static Action AgeChanged;
+    public static Action FinishEvent;
     public TextData TextData;
     public static bool StartStatus = false;
     public bool AgeControl = false;

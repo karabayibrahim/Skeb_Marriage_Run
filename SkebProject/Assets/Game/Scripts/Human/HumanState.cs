@@ -19,4 +19,8 @@ public enum HumanState
     RING,
     HANDWALK,
     TURN,
+    CRY,
+    DANCE,
+    BLOWKISS,
+    INSULT,
 }

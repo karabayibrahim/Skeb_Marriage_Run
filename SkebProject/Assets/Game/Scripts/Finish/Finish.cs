@@ -7,9 +7,10 @@ public class Finish : MonoBehaviour,ICollectable
     [System.Obsolete]
     public void DoCollect()
     {
+        GameManager.Instance.Player.enabled = false;
+        GameManager.FinishEvent?.Invoke();
         gameObject.GetComponent<Collider>().enabled = false;
-        GameManager.Instance.LevelIndex++;
-        Application.LoadLevel(Application.loadedLevel);
+        
     }
 
     // Start is called before the first frame update

@@ -76,6 +76,18 @@ public abstract class Human : MonoBehaviour
             case HumanState.TURN:
                 TrigAnimation("Turn");
                 break;
+            case HumanState.CRY:
+                TrigAnimation("Cry");
+                break;
+            case HumanState.DANCE:
+                TrigAnimation("Dance");
+                break;
+            case HumanState.BLOWKISS:
+                TrigAnimation("BlowKiss");
+                break;
+            case HumanState.INSULT:
+                TrigAnimation("Insult");
+                break;
             default:
 
                 break;

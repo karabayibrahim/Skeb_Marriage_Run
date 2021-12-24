@@ -75,6 +75,10 @@ public class GatePositive : MonoBehaviour, ICollectable
             //DOTween.To(() => alpha, x => alpha = x, 0, 0.5f);
             newMaterial.color =new Color(MaterialObject.GetComponent<Renderer>().material.color.r, MaterialObject.GetComponent<Renderer>().material.color.g, MaterialObject.GetComponent<Renderer>().material.color.b,alpha);
             MaterialObject.GetComponent<MeshRenderer>().material =newMaterial;
+            Destroy(MySprite);
+            Destroy(MyParticle);
+            Destroy(MyText);
+            Destroy(ArkaPlan);
             Destroy(this);
             
         }

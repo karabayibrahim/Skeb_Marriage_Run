@@ -26,6 +26,7 @@ public class Male : Human
         PlayerController.WalkAction += WalkState;
         PlayerController.IdleAction += IdleState;
         GameManager.AgeChanged += PositionControl;
+        GameManager.FinishEvent += FinishState;
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class Male : Human
         PlayerController.WalkAction -= WalkState;
         PlayerController.IdleAction -= IdleState;
         GameManager.AgeChanged -= PositionControl;
+        GameManager.FinishEvent -= FinishState;
     }
 
     // Update is called once per frame
@@ -93,6 +95,36 @@ public class Male : Human
             }
         }
 
+    }
+
+    private void FinishState()
+    {
+        var Player = GameManager.Instance.Player;
+        switch (Player.RelationStatus)
+        {
+            case RelationStatus.TERRIBLE:
+                HumanState = HumanState.INSULT;
+                AnimationPosition(HumanState.INSULT);
+                break;
+            case RelationStatus.BAD:
+                HumanState = HumanState.CRY;
+                AnimationPosition(HumanState.CRY);
+                break;
+            case RelationStatus.NORMAL:
+                HumanState = HumanState.TALK;
+                AnimationPosition(HumanState.TALK);
+                break;
+            case RelationStatus.GOOD:
+                HumanState = HumanState.BLOWKISS;
+                AnimationPosition(HumanState.BLOWKISS);
+                break;
+            case RelationStatus.EXCELLENT:
+                HumanState = HumanState.DANCE;
+                AnimationPosition(HumanState.DANCE);
+                break;
+            default:
+                break;
+        }
     }
 
 
@@ -186,6 +218,22 @@ public class Male : Human
                 break;
             case HumanState.HANDWALK:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                break;
+            case HumanState.CRY:
+                transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(2f, 0f, -0.8f), 0.5f);
+                break;
+            case HumanState.DANCE:
+                transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(2f, 0f, -0.8f), 0.5f);
+                break;
+            case HumanState.BLOWKISS:
+                transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(4f, 0f, -0.8f), 0.5f);
+                break;
+            case HumanState.INSULT:
+                transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(3f, 0f, -0.8f), 0.5f);
                 break;
             default:
                 break;
