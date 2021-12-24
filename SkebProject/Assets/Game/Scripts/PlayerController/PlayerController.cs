@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             _moveFactorX = 0f;
-            //IdleAction?.Invoke();
+            IdleAction?.Invoke();
         }
     }
 
