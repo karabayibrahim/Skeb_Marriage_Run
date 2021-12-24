@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private float _reletionCount;
     private float _lastFrameFingerPositionX;
     private float _moveFactorX;
-    private float _movementClamp = 22f;
+    private float _movementClampPositive;
+    private float _movementClampNegative;
 
     public float RelationCount
     {
@@ -131,6 +132,7 @@ public class PlayerController : MonoBehaviour
         switch (RelationStatus)
         {
             case RelationStatus.TERRIBLE:
+                AdjustMovementClamp(7.5f, -23f);
                 NewMale = NewHumanSpawn();
                 ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.black;
@@ -139,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 //Speed = 10f;
                 break;
             case RelationStatus.BAD:
+                AdjustMovementClamp(7f, -22f);
                 NewMaleDestroy();
                 ParticleSpawn(1);
                 GameManager.Instance.UIManager.Bar.color = Color.red;
@@ -147,6 +150,7 @@ public class PlayerController : MonoBehaviour
                 //Speed = 12f;
                 break;
             case RelationStatus.NORMAL:
+                AdjustMovementClamp(8.5f, -24f);
                 NewMaleDestroy();
                 Color color = new Color32(255, 165, 0, 255);
                 GameManager.Instance.UIManager.Bar.color = color;
@@ -156,6 +160,7 @@ public class PlayerController : MonoBehaviour
                 //Speed = 14f;
                 break;
             case RelationStatus.GOOD:
+                AdjustMovementClamp(9.5f,-24.5f);
                 NewMaleDestroy();
                 ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
@@ -165,6 +170,7 @@ public class PlayerController : MonoBehaviour
                 //Speed = 16f;
                 break;
             case RelationStatus.EXCELLENT:
+                AdjustMovementClamp(10.5f, -26.5f);
                 NewMaleDestroy();
                 ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.green;
@@ -225,6 +231,7 @@ public class PlayerController : MonoBehaviour
     {
         Speed = 21f;
         RelationStatus = RelationStatus.NORMAL;
+        AdjustMovementClamp(8.5f, -24f);
         GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
     }
 
@@ -272,7 +279,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0))
         {
             _moveFactorX = 0f;
-            IdleAction?.Invoke();
+            //IdleAction?.Invoke();
         }
     }
 
@@ -367,10 +374,16 @@ public class PlayerController : MonoBehaviour
                 if (touchPos != Vector2.zero)
                 {
                     transform.Translate(touchPos.x * (HorizontalSpeed/ 100) * Time.deltaTime, 0, 0);
-                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_movementClamp, _movementClamp), transform.position.y, transform.position.z);
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, _movementClampNegative,_movementClampPositive), transform.position.y, transform.position.z);
                 }
             }
         }
+    }
+
+    private void AdjustMovementClamp(float _poz,float _neg)
+    {
+        _movementClampPositive = _poz;
+        _movementClampNegative = _neg;
     }
 
 
