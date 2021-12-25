@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
         NextButton.onClick.AddListener(RestartAdjust);
         GameManager.FinishEvent += FinishStatus;
         var index=GameManager.Instance.LevelIndex+1;
-        LevelText.text = index.ToString();
+        LevelText.text ="Level"+" "+index.ToString();
     }
     private void OnDisable()
     {
