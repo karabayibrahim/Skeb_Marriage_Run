@@ -229,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Speed = 21f;
+        Speed = 31f;
         RelationStatus = RelationStatus.NORMAL;
         AdjustMovementClamp(8.5f, -24f);
         GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
