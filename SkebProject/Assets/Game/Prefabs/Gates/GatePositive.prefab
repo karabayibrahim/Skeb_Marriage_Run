@@ -14185,7 +14185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfef19f27b15b5442b6516236d7cea17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IncreaseAmount: 15
+  IncreaseAmount: 20
   MySprite: {fileID: 8028716901733421912}
   MyParticle: {fileID: 947351805914738662}
   MyText: {fileID: 0}
