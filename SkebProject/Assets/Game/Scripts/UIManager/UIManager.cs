@@ -26,15 +26,14 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         StartPlayButton.onClick.AddListener(StartStatus);
-        NextButton.onClick.AddListener(RestartAdjust);
+        NextButton.onClick.AddListener(NextAdjust);
         GameManager.FinishEvent += FinishStatus;
-        var index=GameManager.Instance.LevelIndex+1;
-        LevelText.text ="Level"+" "+index.ToString();
+        
     }
     private void OnDisable()
     {
         StartPlayButton.onClick.RemoveListener(StartStatus);
-        NextButton.onClick.RemoveListener(RestartAdjust);
+        NextButton.onClick.RemoveListener(NextAdjust);
         GameManager.FinishEvent -= FinishStatus;
     }
 
@@ -63,7 +62,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator FinishTimer()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         FinishPanel.SetActive(true);
         switch (GameManager.Instance.Player.RelationStatus)
         {
@@ -93,9 +92,24 @@ public class UIManager : MonoBehaviour
         yield break;
     }
 
-    private void RestartAdjust()
+    private void NextAdjust()
     {
-        //GameManager.Instance.LevelIndex++;
-        Application.LoadLevel(Application.loadedLevel);
+        GameManager.ParticleDestroyEvent?.Invoke(gameObject);
+        if (GameManager.Instance.LevelIndex==2)
+        {
+            GameManager.Instance.LevelIndex = 0;
+        }
+        else
+        {
+            GameManager.Instance.LevelIndex++;
+        }
+        GameManager.Instance.Player.enabled = true;
+        
+        var index = GameManager.Instance.LevelIndex + 1;
+        LevelText.text = "Level" + " " + index.ToString();
+        FinishPanel.SetActive(false);
+        //Application.LoadLevel(Application.loadedLevel);
     }
+
+    
 }

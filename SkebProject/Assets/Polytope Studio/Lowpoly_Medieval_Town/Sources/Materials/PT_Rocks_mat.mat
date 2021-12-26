@@ -127,7 +127,9 @@ Material:
     - _DecakEmissionColor: {r: 1, g: 0.9248579, b: 0, a: 0}
     - _DecalsColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GroundColor: {r: 0.0754717, g: 0.0754717, b: 0.0754717, a: 1}
+    - _GroundColor: {r: 0.55922925, g: 0.6698113, b: 0.65385294, a: 1}
     - _OreColor: {r: 1, g: 0.9248579, b: 0, a: 0}
     - _OreEmissionColor: {r: 1, g: 0.9248579, b: 0, a: 0}
-    - _TopColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
+    - _SnowDirection: {r: 0.1, g: 1, b: 0.1, a: 0}
+    - _TopColor: {r: 0.5583406, g: 0.5583406, b: 0.5583406, a: 1}
+    - _Vector1: {r: 0.1, g: 1, b: 0.1, a: 0}

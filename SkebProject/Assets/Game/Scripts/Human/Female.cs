@@ -17,6 +17,7 @@ public class Female : Human
 
     private void OnEnable()
     {
+        GameManager.Instance.Player.Female = this;
         PlayerController.WalkAction += WalkState;
         PlayerController.IdleAction += IdleState;
         GameManager.AgeChanged += PositionControl;
@@ -164,6 +165,7 @@ public class Female : Human
         {
             case HumanState.IDLE:
                 transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(-2f, 0f, 0f), 0.5f);
                 break;
             case HumanState.WALK:
                 transform.DORotate(new Vector3(0, 0f, 0), 0.5f);

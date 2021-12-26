@@ -6,23 +6,26 @@ using UnityEditor;
 public class Male : Human
 {
     private GameObject newParticle;
-    private bool _adultControl = false;
-    private bool _oldControl = false;
+
 
 
     public HumanState TempHumanState;
     public GameObject Ring;
     public bool IsTurn = false;
+    public bool _adultControl = false;
+    public bool _oldControl = false;
 
     void Start()
     {
         base._anim = GetComponent<Animator>();
         GameManager.Instance.Player.Male = this;
         Ring.SetActive(false);
-
     }
     private void OnEnable()
     {
+        _adultControl = false;
+        _oldControl = false;
+        GameManager.Instance.Player.Male = this;
         PlayerController.WalkAction += WalkState;
         PlayerController.IdleAction += IdleState;
         GameManager.AgeChanged += PositionControl;
@@ -41,16 +44,17 @@ public class Male : Human
     void Update()
     {
         _anim.SetFloat("Blend", GameManager.Instance.Player.AgeCalculator());
-        if (GameManager.Instance.Player.AgeCalculator() >= 0.3f && !_adultControl)
+        if (GameManager.Instance.Player.AgeCalculator() > 0.3f && !_adultControl)
         {
             GameManager.AgeChanged?.Invoke();
             _adultControl = true;
         }
-        else if (GameManager.Instance.Player.AgeCalculator() >= 0.6f && !_oldControl)
+        else if (GameManager.Instance.Player.AgeCalculator() > 0.6f && !_oldControl)
         {
             GameManager.AgeChanged?.Invoke();
             _oldControl = true;
         }
+
     }
     public override void WalkState()
     {
@@ -105,22 +109,35 @@ public class Male : Human
             case RelationStatus.TERRIBLE:
                 HumanState = HumanState.INSULT;
                 AnimationPosition(HumanState.INSULT);
+                var newParticle2 = Instantiate(GameManager.Instance.Data.Particles[17], new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 5f, GameManager.Instance.Player.transform.position.z), Quaternion.identity);
+                GameManager.ParticleDestroyEvent += x => ConfettiDestroy(newParticle2);
                 break;
             case RelationStatus.BAD:
                 HumanState = HumanState.CRY;
                 AnimationPosition(HumanState.CRY);
+                var newParticle1 = Instantiate(GameManager.Instance.Data.Particles[16], new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 5f, GameManager.Instance.Player.transform.position.z), Quaternion.identity);
+                GameManager.ParticleDestroyEvent += x => ConfettiDestroy(newParticle1);
+
                 break;
             case RelationStatus.NORMAL:
                 HumanState = HumanState.TALK;
                 AnimationPosition(HumanState.TALK);
+                var newParticle4 = Instantiate(GameManager.Instance.Data.Particles[19], new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 5f, GameManager.Instance.Player.transform.position.z), Quaternion.identity);
+                GameManager.ParticleDestroyEvent += x => ConfettiDestroy(newParticle4);
+
                 break;
             case RelationStatus.GOOD:
                 HumanState = HumanState.BLOWKISS;
                 AnimationPosition(HumanState.BLOWKISS);
+                var newParticle3 = Instantiate(GameManager.Instance.Data.Particles[18], new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 5f, GameManager.Instance.Player.transform.position.z), Quaternion.identity);
+                GameManager.ParticleDestroyEvent += x => ConfettiDestroy(newParticle3);
                 break;
             case RelationStatus.EXCELLENT:
                 HumanState = HumanState.DANCE;
                 AnimationPosition(HumanState.DANCE);
+                var newParticle = Instantiate(GameManager.Instance.Data.Particles[15], new Vector3(GameManager.Instance.Player.transform.position.x, GameManager.Instance.Player.transform.position.y + 5f, GameManager.Instance.Player.transform.position.z), Quaternion.identity);
+
+                GameManager.ParticleDestroyEvent += x => ConfettiDestroy(newParticle);
                 break;
             default:
                 break;
@@ -171,6 +188,7 @@ public class Male : Human
         {
             case HumanState.IDLE:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(2f, 0f, 0f), 0.5f);
                 break;
             case HumanState.WALK:
                 transform.DORotate(new Vector3(0, 0f, 0), 0.5f);
@@ -278,6 +296,10 @@ public class Male : Human
         IsTurn = false;
     }
 
+    public void ConfettiDestroy(GameObject _confeti)
+    {
+        Destroy(_confeti);
+    }
 
 
 }

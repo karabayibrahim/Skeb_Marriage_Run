@@ -66,5 +66,10 @@ MonoBehaviour:
   - {fileID: 4475701220919344655, guid: d66ebded1eea93c43acc333ec4570dad, type: 3}
   - {fileID: 1421230531092383616, guid: 8da84fb553129c94d82dc7ec4e73c95b, type: 3}
   - {fileID: 9170174243651405052, guid: b2e638b2132efb94e97b9bc69827ed98, type: 3}
+  - {fileID: 4535951080175719530, guid: 713c77bdcab1c284c8a9b866d7b7bc82, type: 3}
+  - {fileID: 3798387547905963814, guid: 15938e8acc86cb34398adbbe2a1e1cde, type: 3}
+  - {fileID: 6910219618813007009, guid: b0bbdbdbde1eceb41ae53368ebd6a14e, type: 3}
+  - {fileID: 5292080363780019480, guid: 1cc9dd52ddde22842ab303d8aa936ebd, type: 3}
+  - {fileID: 6026490743129311616, guid: 0f001143e8a1c714ea5445e96b715b5a, type: 3}
   NewMale: {fileID: 2235438740705565791, guid: 629f4a38bb4424d42b9ada805f800034, type: 3}
   AlphaMat: {fileID: 2100000, guid: 64751c587ac926743ae31de3502955b6, type: 2}

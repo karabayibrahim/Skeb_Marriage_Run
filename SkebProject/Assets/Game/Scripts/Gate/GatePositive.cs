@@ -69,7 +69,6 @@ public class GatePositive : MonoBehaviour, ICollectable
     {
         if (transform.position.z<GameManager.Instance.Player.transform.position.z)
         {
-            Debug.Log("Yakın");
             var newMaterial = GameManager.Instance.Data.AlphaMat;
             var alpha = 0;
             //DOTween.To(() => alpha, x => alpha = x, 0, 0.5f);

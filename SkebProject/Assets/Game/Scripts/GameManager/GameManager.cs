@@ -17,12 +17,16 @@ public class GameManager : MonoSingleton<GameManager>
     public static Action GameStateChanged;
     public static Action AgeChanged;
     public static Action FinishEvent;
+    public static Action<GameObject> ParticleDestroyEvent;
     public TextData TextData;
     public static bool StartStatus = false;
     public bool AgeControl = false;
     public ConvetModelSample MaleConvert;
     public ConvetModelSample FemaleConvert;
     public TextMesh AgeCount;
+    public List<Male> Males = new List<Male>();
+    public List<Female> Females = new List<Female>();
+
 
     private int _levelIndex;
 
@@ -53,6 +57,7 @@ public class GameManager : MonoSingleton<GameManager>
         CamAssigment();
         AgeChanged += MaleConvert.InProgress;
         AgeChanged += FemaleConvert.InProgress;
+        HumansAdjust();
     }
 
     private void OnDisable()
@@ -85,6 +90,18 @@ public class GameManager : MonoSingleton<GameManager>
     {
         var currentLevel=Instantiate(LevelData.levels[LevelIndex], transform.position, Quaternion.identity);
         CurrentLevel = currentLevel;
+    }
+
+    public void HumansAdjust()
+    {
+        for (int i = 0; i < Females.Count; i++)
+        {
+            FemaleConvert._convertStack[i] = Females[i].gameObject;
+        }
+        for (int i = 0; i < Males.Count; i++)
+        {
+            MaleConvert._convertStack[i] = Males[i].gameObject;
+        }
     }
 
 }

@@ -45,7 +45,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 5930a2cf4b06d4747878f6bdaad8d95f, type: 3}
-        m_Scale: {x: 3, y: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _Mask1:
         m_Texture: {fileID: 0}
@@ -79,16 +79,16 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0.77
-    - _RampThreshold: 0.5
-    - _RimMax: 1
-    - _RimMin: 0.4
+    - _RampSmooth: 0.993
+    - _RampThreshold: 0.67
+    - _RimMax: 0.985
+    - _RimMin: 0.546
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UVWaveAmplitude: 0.05
-    - _UVWaveFrequency: 1
+    - _UVWaveAmplitude: 0.109
+    - _UVWaveFrequency: 2.98
     - _UVWaveSpeed: 1
     - _WaveFrequency: 2
     - _WaveHeight: 0.03
@@ -97,11 +97,11 @@ Material:
     - __dummy__: 0
     m_Colors:
     - _BumpSpeed: {r: 0.2, g: 0.2, b: 0.3, a: 0.3}
-    - _Color: {r: 0.06666667, g: 0.6666667, b: 0.92549026, a: 1}
-    - _DepthColor: {r: 0, g: 0.37459263, b: 0.778, a: 1}
+    - _Color: {r: 0.017354928, g: 0.735849, b: 0.5607653, a: 1}
+    - _DepthColor: {r: 0.3915094, g: 0.6865352, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
     - _FoamSpeed: {r: -1, g: -1, b: -2, a: -2}
     - _HColor: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
-    - _RimColor: {r: 0.23907872, g: 0.52212596, b: 0.9852941, a: 0.078431375}
+    - _RimColor: {r: 0.64705884, g: 0.9176471, b: 1, a: 1}
     - _SColor: {r: 0, g: 0.31257612, b: 0.6764706, a: 1}

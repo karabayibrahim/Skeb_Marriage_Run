@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private float _moveFactorX;
     private float _movementClampPositive;
     private float _movementClampNegative;
+    public Vector3 startPosition;
 
     public float RelationCount
     {
@@ -160,7 +161,7 @@ public class PlayerController : MonoBehaviour
                 //Speed = 14f;
                 break;
             case RelationStatus.GOOD:
-                AdjustMovementClamp(9.5f,-24.5f);
+                AdjustMovementClamp(9.5f, -24.5f);
                 NewMaleDestroy();
                 ParticleSpawn(0);
                 GameManager.Instance.UIManager.Bar.color = Color.yellow;
@@ -189,18 +190,12 @@ public class PlayerController : MonoBehaviour
         {
             case AgeStatus.YOUNG:
                 GameManager.Instance.GameStateIndex = 0;
-                GameManager.GameStateChanged?.Invoke();
-                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             case AgeStatus.ADULT:
                 GameManager.Instance.GameStateIndex = 1;
-                GameManager.GameStateChanged?.Invoke();
-                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             case AgeStatus.OLD:
                 GameManager.Instance.GameStateIndex = 2;
-                GameManager.GameStateChanged?.Invoke();
-                CharacterChanged(Male.transform.position, Female.transform.position);
                 break;
             default:
                 break;
@@ -229,10 +224,18 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.UIManager.NextButton.onClick.AddListener(NextLevelSettings);
+        startPosition = transform.position;
         Speed = 31f;
         RelationStatus = RelationStatus.NORMAL;
         AdjustMovementClamp(8.5f, -24f);
         GameManager.Instance.UIManager.Bar.fillAmount = RelationCount / 100f;
+        Debug.Log(AgeCalculator());
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.UIManager.NextButton.onClick.RemoveListener(NextLevelSettings);
     }
 
     // Update is called once per frame
@@ -283,19 +286,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CharacterChanged(Vector3 _malePoz, Vector3 _femalePoz)
-    {
-        var maleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_malePoz.x, _malePoz.y + 5f, _malePoz.z), Quaternion.identity, transform);
-        var femaleParticle = Instantiate(GameManager.Instance.Data.Particles[7], new Vector3(_femalePoz.x, _femalePoz.y + 5f, _femalePoz.z), Quaternion.identity, transform);
-        Destroy(maleParticle, 5f);
-        Destroy(femaleParticle, 5f);
-        Destroy(Male.gameObject);
-        Destroy(Female.gameObject);
-        Male = Instantiate(GameManager.Instance.Data.Males[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity, transform);
-        Male.transform.position = _malePoz;
-        Female = Instantiate(GameManager.Instance.Data.Females[GameManager.Instance.GameStateIndex], transform.position, Quaternion.identity, transform);
-        Female.transform.position = _femalePoz;
-    }
 
     private void CouplePositionAdjust(Vector3 _malePos, Vector3 _femalePos)
     {
@@ -327,19 +317,21 @@ public class PlayerController : MonoBehaviour
 
     public float AgeCalculator()
     {
-        if (GameManager.Instance.CurrentLevel.Finish!=null)
-        {
-            var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
-            var distance = gameObject.transform.position.z / finishPoz;
-            return distance;
-        }
-        else
-        {
-            var distance = 0;
-            return distance;
-        }
-        
-        
+        var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+        var distance = gameObject.transform.position.z / finishPoz;
+        return distance;
+        //if (GameManager.Instance.CurrentLevel.Finish != null)
+        //{
+            
+        //}
+        //else
+        //{
+        //    var finishPoz = GameManager.Instance.CurrentLevel.Finish.transform.position.z;
+        //    var distance = gameObject.transform.position.z / finishPoz;
+        //    return distance;
+        //}
+
+
     }
 
     private void AdjustWalkRandomIndex()
@@ -373,19 +365,43 @@ public class PlayerController : MonoBehaviour
                 Vector2 touchPos = _theTouch.deltaPosition;
                 if (touchPos != Vector2.zero)
                 {
-                    transform.Translate(touchPos.x * (HorizontalSpeed/ 100) * Time.deltaTime, 0, 0);
-                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, _movementClampNegative,_movementClampPositive), transform.position.y, transform.position.z);
+                    transform.Translate(touchPos.x * (HorizontalSpeed / 100) * Time.deltaTime, 0, 0);
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, _movementClampNegative, _movementClampPositive), transform.position.y, transform.position.z);
                 }
             }
         }
     }
 
-    private void AdjustMovementClamp(float _poz,float _neg)
+    private void AdjustMovementClamp(float _poz, float _neg)
     {
         _movementClampPositive = _poz;
         _movementClampNegative = _neg;
     }
 
-
+    private void NextLevelSettings()
+    {
+        transform.position = startPosition;
+        Male.HumanState = HumanState.IDLE;
+        Female.HumanState = HumanState.IDLE;
+        RelationCount = 0;
+        RelationStatus = RelationStatus.NORMAL;
+        AgeStatus = AgeStatus.YOUNG;
+        //for (int i = 0; i < GameManager.Instance.Females.Count; i++)
+        //{
+        //    if (GameManager.Instance.Females[i]!=null|| GameManager.Instance.Males[i]!=null)
+        //    {
+        //        GameManager.Instance.Females[i].gameObject.SetActive(false);
+        //        GameManager.Instance.Males[i].gameObject.SetActive(false);
+        //    }
+        //}
+        //GameManager.Instance.Females[0].gameObject.SetActive(true);
+        //GameManager.Instance.Males[0].gameObject.SetActive(true);
+        GameManager.AgeChanged?.Invoke();
+        GameManager.Instance.Females[0].gameObject.transform.localPosition = new Vector3(-2, 0, 0);
+        GameManager.Instance.Females[0].gameObject.transform.DORotate(new Vector3(0, 0, 0),0.5f);
+        GameManager.Instance.Males[0].gameObject.transform.localPosition = new Vector3(2, 0, 0);
+        Debug.Log(AgeCalculator());
+        GameManager.Instance.HumansAdjust();
+    }
 
 }
