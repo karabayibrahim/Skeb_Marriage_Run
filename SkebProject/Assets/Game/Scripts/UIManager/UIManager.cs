@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public bool GameStart = false;
@@ -97,19 +98,22 @@ public class UIManager : MonoBehaviour
     private void NextAdjust()
     {
         GameManager.ParticleDestroyEvent?.Invoke(gameObject);
-        if (GameManager.Instance.LevelIndex == 2)
-        {
-            GameManager.Instance.LevelIndex = 0;
-        }
-        else
-        {
-            GameManager.Instance.LevelIndex++;
-        }
+        //if (GameManager.Instance.LevelIndex == 2)
+        //{
+        //    GameManager.Instance.LevelIndex = 0;
+        //}
+        //else
+        //{
+        //}
+        GameManager.Instance.LevelIndex++;
+
         GameManager.Instance.Player.enabled = true;
 
         var index = GameManager.Instance.LevelIndex + 1;
         LevelText.text = "Level" + " " + index.ToString();
         FinishPanel.SetActive(false);
+        PlayerPrefs.SetInt("Level", GameManager.Instance.LevelIndex);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("Level"), LoadSceneMode.Single);
         //Application.LoadLevel(Application.loadedLevel);
     }
 

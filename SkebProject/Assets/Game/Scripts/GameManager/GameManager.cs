@@ -26,7 +26,7 @@ public class GameManager : MonoSingleton<GameManager>
     public TextMesh AgeCount;
     public List<Male> Males = new List<Male>();
     public List<Female> Females = new List<Female>();
-
+    public bool DeleteData = false;
 
     private int _levelIndex;
 
@@ -52,6 +52,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     void Start()
     {
+        PlayerPrefs.GetInt("Level");
         LevelSpawn();
         Application.targetFrameRate = 60;
         CamAssigment();
@@ -68,7 +69,10 @@ public class GameManager : MonoSingleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-       
+        if (DeleteData)
+        {
+            PlayerPrefs.DeleteKey("Level");
+        }
     }
 
     private void CamAssigment()
@@ -83,13 +87,13 @@ public class GameManager : MonoSingleton<GameManager>
         {
             Destroy(CurrentLevel.gameObject);
         }
-        LevelSpawn();
+        //LevelSpawn();
     }
 
     private void LevelSpawn()
     {
-        var currentLevel=Instantiate(LevelData.levels[LevelIndex], transform.position, Quaternion.identity);
-        CurrentLevel = currentLevel;
+        //var currentLevel=Instantiate(LevelData.levels[LevelIndex], transform.position, Quaternion.identity);
+        //CurrentLevel = currentLevel;
     }
 
     public void HumansAdjust()
