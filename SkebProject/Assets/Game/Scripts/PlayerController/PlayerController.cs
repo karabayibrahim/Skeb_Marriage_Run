@@ -235,12 +235,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.Instance.UIManager.NextButton.onClick.RemoveListener(NextLevelSettings);
+        if (GameManager.Instance!=null)
+        {
+            GameManager.Instance.UIManager.NextButton.onClick.RemoveListener(NextLevelSettings);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.UIManager.GameStart==false)
+        {
+            return;
+        }
         MoveSystem();
         HorizontalMovement();
     }

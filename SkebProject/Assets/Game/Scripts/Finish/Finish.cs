@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour,ICollectable
     [System.Obsolete]
     public void DoCollect()
     {
+        GameManager.Instance.UIManager.GameStart = false;
         GameManager.Instance.Player.enabled = false;
         GameManager.FinishEvent?.Invoke();
         gameObject.GetComponent<Collider>().enabled = false;

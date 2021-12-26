@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
+    public bool GameStart = false;
     public Image Bar;
     public Text StatusText;
     [Header("StartPanel")]
@@ -28,7 +29,7 @@ public class UIManager : MonoBehaviour
         StartPlayButton.onClick.AddListener(StartStatus);
         NextButton.onClick.AddListener(NextAdjust);
         GameManager.FinishEvent += FinishStatus;
-        
+
     }
     private void OnDisable()
     {
@@ -40,10 +41,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void StatusTextAdjust(string _text,Color _color)
+    public void StatusTextAdjust(string _text, Color _color)
     {
         StatusText.text = _text;
         StatusText.color = _color;
@@ -51,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void StartStatus()
     {
+        GameStart = true;
         StartPanel.SetActive(false);
         InGamePanel.SetActive(true);
     }
@@ -95,7 +97,7 @@ public class UIManager : MonoBehaviour
     private void NextAdjust()
     {
         GameManager.ParticleDestroyEvent?.Invoke(gameObject);
-        if (GameManager.Instance.LevelIndex==2)
+        if (GameManager.Instance.LevelIndex == 2)
         {
             GameManager.Instance.LevelIndex = 0;
         }
@@ -104,12 +106,12 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.LevelIndex++;
         }
         GameManager.Instance.Player.enabled = true;
-        
+
         var index = GameManager.Instance.LevelIndex + 1;
         LevelText.text = "Level" + " " + index.ToString();
         FinishPanel.SetActive(false);
         //Application.LoadLevel(Application.loadedLevel);
     }
 
-    
+
 }
