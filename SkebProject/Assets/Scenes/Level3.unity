@@ -9748,7 +9748,7 @@ MonoBehaviour:
   Player: {fileID: 1833149962}
   Data: {fileID: 11400000, guid: 9dd0b0623a8f21145b43e93f608c95b4, type: 2}
   LevelData: {fileID: 11400000, guid: 46300af143081404b9f1b49c955ab1c0, type: 2}
-  CurrentLevel: {fileID: 0}
+  CurrentLevel: {fileID: 2056111793}
   Cam: {fileID: 381319251}
   UIManager: {fileID: 605083421}
   GameStateIndex: 0
@@ -18261,6 +18261,18 @@ Transform:
   m_Father: {fileID: 990745214}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056111793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3565775386564547566, guid: f76819b35fe68b5449f38cb501415666,
+    type: 3}
+  m_PrefabInstance: {fileID: 2038157222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08af2991c36934b4ba148d0b8c174016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2057866235
 GameObject:
   m_ObjectHideFlags: 0

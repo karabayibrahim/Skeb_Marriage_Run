@@ -401,7 +401,7 @@ MonoBehaviour:
   Player: {fileID: 210574620}
   Data: {fileID: 11400000, guid: 9dd0b0623a8f21145b43e93f608c95b4, type: 2}
   LevelData: {fileID: 11400000, guid: 46300af143081404b9f1b49c955ab1c0, type: 2}
-  CurrentLevel: {fileID: 0}
+  CurrentLevel: {fileID: 1181009435}
   Cam: {fileID: 2083359118}
   UIManager: {fileID: 1866341481}
   GameStateIndex: 0
@@ -10492,6 +10492,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161644868}
   m_Mesh: {fileID: 4300038, guid: ab47e59018825f1448a81ffdcaaf3c50, type: 3}
+--- !u!114 &1181009435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3565775386564547566, guid: 55483a870b3109546a65874f7f97b958,
+    type: 3}
+  m_PrefabInstance: {fileID: 461816616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08af2991c36934b4ba148d0b8c174016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187415380
 GameObject:
   m_ObjectHideFlags: 0
