@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public GameObject FailPanel;
     public GameObject CompletePanel;
     public Button NextButton;
+    public Button RetryartButton;
 
 
 
@@ -27,14 +28,18 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        var index = PlayerPrefs.GetInt("Level") + 1;
+        LevelText.text = "Level" + " " + index.ToString();
         StartPlayButton.onClick.AddListener(StartStatus);
         NextButton.onClick.AddListener(NextAdjust);
+        RetryartButton.onClick.AddListener(RetryStatus);
         GameManager.FinishEvent += FinishStatus;
 
     }
     private void OnDisable()
     {
         StartPlayButton.onClick.RemoveListener(StartStatus);
+        RetryartButton.onClick.RemoveListener(RetryStatus);
         NextButton.onClick.RemoveListener(NextAdjust);
         GameManager.FinishEvent -= FinishStatus;
     }
@@ -95,6 +100,11 @@ public class UIManager : MonoBehaviour
         yield break;
     }
 
+    private void RetryStatus()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
     private void NextAdjust()
     {
         GameManager.ParticleDestroyEvent?.Invoke(gameObject);
@@ -109,12 +119,11 @@ public class UIManager : MonoBehaviour
 
         GameManager.Instance.Player.enabled = true;
 
-        var index = GameManager.Instance.LevelIndex + 1;
-        LevelText.text = "Level" + " " + index.ToString();
+       
         FinishPanel.SetActive(false);
         PlayerPrefs.SetInt("Level", GameManager.Instance.LevelIndex);
         SceneManager.LoadScene(PlayerPrefs.GetInt("Level"), LoadSceneMode.Single);
-        //Application.LoadLevel(Application.loadedLevel);
+        
     }
 
 

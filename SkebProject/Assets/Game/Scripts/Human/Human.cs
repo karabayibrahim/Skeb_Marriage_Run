@@ -108,7 +108,7 @@ public abstract class Human : MonoBehaviour
     }
     public void TrigAnimation(string animName)
     {
-        _anim.CrossFade(animName, 0.05f);
+        _anim.CrossFade(animName, 0.01f);
     }
 
     public void PositionChange(Vector3 _newposition)
