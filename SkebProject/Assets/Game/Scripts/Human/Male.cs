@@ -186,6 +186,7 @@ public class Male : Human
     {
         switch (humanState)
         {
+
             case HumanState.IDLE:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 transform.DOLocalMove(new Vector3(2f, 0f, 0f), 0.5f);
@@ -219,6 +220,7 @@ public class Male : Human
                 break;
             case HumanState.TALK:
                 transform.DORotate(new Vector3(0, -90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(2f, 0.25f, -0.55f), 0.5f);
                 newParticle = Instantiate(GameManager.Instance.Data.Particles[8], transform.position, Quaternion.identity, transform);
                 newParticle.transform.localPosition = new Vector3(0, 13f, -1.2f);
                 newParticle.GetComponent<ParticleSystemRenderer>().flip = new Vector3(1, 0, 0);
@@ -292,7 +294,7 @@ public class Male : Human
     private IEnumerator TrigTime(float _time)
     {
         yield return new WaitForSeconds(_time);
-        HumanState = TempHumanState;
+        //HumanState = TempHumanState;
         IsTurn = false;
     }
 

@@ -213,6 +213,7 @@ public class Female : Human
                 break;
             case HumanState.TALK:
                 transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
+                transform.DOLocalMove(new Vector3(-2f, 0.25f, -0.55f), 0.5f);
                 newParticle = Instantiate(GameManager.Instance.Data.Particles[8], transform.position, Quaternion.identity, transform);
                 newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
                 break;
@@ -287,7 +288,7 @@ public class Female : Human
     private IEnumerator TrigTime(float _time)
     {
         yield return new WaitForSeconds(_time);
-        HumanState =TempHumanState;
+        //HumanState =TempHumanState;
         IsTurn = false;
     }
 }

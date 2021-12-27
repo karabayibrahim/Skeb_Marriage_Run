@@ -296,8 +296,8 @@ public class PlayerController : MonoBehaviour
 
     private void CouplePositionAdjust(Vector3 _malePos, Vector3 _femalePos)
     {
-        Male.transform.DOLocalMove(_malePos, 0.5f).SetEase(Ease.OutCubic);
-        Female.transform.DOLocalMove(_femalePos, 0.5f).SetEase(Ease.OutCubic);
+        Male.transform.DOLocalMove(_malePos, 0.1f);
+        Female.transform.DOLocalMove(_femalePos, 0.1f);
     }
 
     private Human NewHumanSpawn()
