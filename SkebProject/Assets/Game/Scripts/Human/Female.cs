@@ -39,11 +39,11 @@ public class Female : Human
         if (GameManager.Instance.Player.AgeCalculator()>=0)
         {
             var age = (int)(GameManager.Instance.Player.AgeCalculator() * 70) + 18;
-            GameManager.Instance.AgeCount.text = "AGE:" + age;
+            GameManager.Instance.UIManager.AgeText.text = "Age"+" "+":"+"" + age;
         }
         else
         {
-            GameManager.Instance.AgeCount.text = "AGE:" + 18;
+            GameManager.Instance.UIManager.AgeText.text = "Age"+" "+":"+"" + 18;
         }
         
     }

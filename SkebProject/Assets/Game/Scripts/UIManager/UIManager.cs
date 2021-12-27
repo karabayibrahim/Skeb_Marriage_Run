@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+    public Text AgeText;
     public bool GameStart = false;
     public Image Bar;
     public Text StatusText;
