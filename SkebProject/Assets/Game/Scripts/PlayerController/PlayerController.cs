@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public static Action WalkAction;
     public static Action IdleAction;
     public int WalkRandomIndex;
+    public int IdleRandomIndex;
     public bool IsClampRight = false;
     public bool IsClampLeft = false;
     public float MoveFactorX => _moveFactorX;
@@ -288,6 +289,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            AdjustIdleRandomIndex();
             _moveFactorX = 0f;
             IdleAction?.Invoke();
         }
@@ -345,6 +347,11 @@ public class PlayerController : MonoBehaviour
     {
         WalkRandomIndex = UnityEngine.Random.Range(0, 2);
         //Debug.Log(WalkRandomIndex);
+    }
+
+    private void AdjustIdleRandomIndex()
+    {
+        IdleRandomIndex = UnityEngine.Random.Range(0, 2);
     }
 
     private void MoveControlSystem()

@@ -70,8 +70,16 @@ public class Female : Human
             }
             else if (Player.RelationStatus == RelationStatus.TERRIBLE)
             {
-                HumanState = HumanState.SIT;
-                AnimationPosition(HumanState.SIT);
+                if (Player.WalkRandomIndex == 0)
+                {
+                    HumanState = HumanState.SIT;
+                    AnimationPosition(HumanState.SIT);
+                }
+                else if (Player.WalkRandomIndex == 1)
+                {
+                    HumanState = HumanState.SHOULDER;
+                    AnimationPosition(HumanState.SHOULDER);
+                }
             }
             else if (Player.RelationStatus == RelationStatus.BAD)
             {
@@ -130,8 +138,18 @@ public class Female : Human
         switch (Player.RelationStatus)
         {
             case RelationStatus.TERRIBLE:
-                HumanState = HumanState.KISS;
-                AnimationPosition(HumanState.KISS);
+                if (Player.IdleRandomIndex==0)
+                {
+                    HumanState = HumanState.KISS;
+                    AnimationPosition(HumanState.KISS);
+                }
+
+                else if (Player.IdleRandomIndex==1)
+                {
+                    HumanState = HumanState.RING;
+                    AnimationPosition(HumanState.RING);
+                }
+                
                 break;
             case RelationStatus.BAD:
                 HumanState = HumanState.ARGUING;
@@ -218,17 +236,37 @@ public class Female : Human
                 newParticle.transform.localPosition = new Vector3(0, 12.5f, -1.2f);
                 break;
             case HumanState.SHOULDER:
-                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
-                transform.DOLocalMove(new Vector3(-0.25f, 0.25f, -0.55f), 0.5f);
+                if (Player.RelationStatus==RelationStatus.EXCELLENT)
+                {
+                    transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                    transform.DOLocalMove(new Vector3(-0.25f, 0.25f, -0.55f), 0.5f);
+                }
+                else
+                {
+                    transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                    transform.DOLocalMove(new Vector3(-3f, 0.25f, -0.55f), 0.5f);
+                }
+                
                 break;
             case HumanState.CLOSEARM:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
                 break;
             case HumanState.RING:
-                transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
-                transform.DOLocalMove(new Vector3(-4f, 0, 0), 0.5f);
-                newParticle = Instantiate(GameManager.Instance.Data.Particles[9], transform.position, Quaternion.identity, transform);
-                newParticle.transform.localPosition = new Vector3(-4, 11f, -1.2f);
+                if (Player.RelationStatus==RelationStatus.EXCELLENT)
+                {
+                    transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
+                    transform.DOLocalMove(new Vector3(-4f, 0, 0), 0.5f);
+                    newParticle = Instantiate(GameManager.Instance.Data.Particles[9], transform.position, Quaternion.identity, transform);
+                    newParticle.transform.localPosition = new Vector3(-4, 11f, -1.2f);
+                }
+                else
+                {
+                    transform.DORotate(new Vector3(0, 90f, 0), 0.5f);
+                    transform.DOLocalMove(new Vector3(-6f, 0, 0), 0.5f);
+                    newParticle = Instantiate(GameManager.Instance.Data.Particles[9], transform.position, Quaternion.identity, transform);
+                    newParticle.transform.localPosition = new Vector3(-4, 11f, -1.2f);
+                }
+                
                 break;
             case HumanState.HANDWALK:
                 transform.DORotate(new Vector3(0, 0, 0), 0.5f);
