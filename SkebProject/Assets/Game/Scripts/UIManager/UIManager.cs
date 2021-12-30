@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        var index = PlayerPrefs.GetInt("Level") + 1;
+        var index = PlayerPrefs.GetInt("Level");
         LevelText.text = "Level" + " " + index.ToString();
         StartPlayButton.onClick.AddListener(StartStatus);
         NextButton.onClick.AddListener(NextAdjust);
@@ -122,9 +122,16 @@ public class UIManager : MonoBehaviour
 
        
         FinishPanel.SetActive(false);
-        PlayerPrefs.SetInt("Level", GameManager.Instance.LevelIndex);
-        SceneManager.LoadScene(PlayerPrefs.GetInt("Level"), LoadSceneMode.Single);
-        
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        if (PlayerPrefs.GetInt("Level")>=3)
+        {
+            SceneManager.LoadScene("Level " + Random.Range(1, 3));
+        }
+        else
+        {
+            SceneManager.LoadScene("Level "+PlayerPrefs.GetInt("Level"));
+        }
+
     }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TapticPlugin;
 public class GatePositive : MonoBehaviour, ICollectable
 {
     public float IncreaseAmount;
@@ -12,6 +13,7 @@ public class GatePositive : MonoBehaviour, ICollectable
     public GameObject MaterialObject;
     public void DoCollect()
     {
+        TapticManager.Impact(ImpactFeedback.Medium);
         gameObject.GetComponent<Collider>().enabled = false;
         var Player = GameManager.Instance.Player;
         FemaleTurnAdjust();

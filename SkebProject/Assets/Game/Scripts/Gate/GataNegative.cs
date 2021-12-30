@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TapticPlugin;
 public class GataNegative : MonoBehaviour,ICollectable
 {
     public float IncreaseAmount;
@@ -12,6 +12,7 @@ public class GataNegative : MonoBehaviour,ICollectable
     public GameObject MaterialObject;
     public void DoCollect()
     {
+        TapticManager.Impact(ImpactFeedback.Medium);
         GameManager.Instance.Player.RelationCount -= IncreaseAmount;
         var newParticle = Instantiate(GameManager.Instance.Data.Particles[13], transform.position, Quaternion.identity);
         Destroy(newParticle, 2f);

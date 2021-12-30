@@ -44,12 +44,12 @@ public class FlatKitReadme : ScriptableObject {
         PackageManagerError = null;
 
         PackageCollection packages = GetPackageList();
-        foreach (PackageInfo p in packages) {
-            if (p.name == UrpPackageID) {
-                UrpInstalled = true;
-                UrpVersionInstalled = p.version;
-            }
-        }
+        //foreach (PackageInfo p in packages) {
+        //    if (p.name == UrpPackageID) {
+        //        UrpInstalled = true;
+        //        UrpVersionInstalled = p.version;
+        //    }
+        //}
 
         string path = AssetDatabase.GUIDToAssetPath(StylizedShaderGuid.ToString());
         var flatKitSourceAsset = AssetDatabase.LoadAssetAtPath<Shader>(path);

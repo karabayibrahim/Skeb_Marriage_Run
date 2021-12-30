@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Human NewMale;
     public float Speed;
     public float HorizontalSpeed;
+    public float swerveSpeed;
     public static Action WalkAction;
     public static Action IdleAction;
     public int WalkRandomIndex;
@@ -249,6 +250,9 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        MovementInput();
+        //float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
+        //transform.Translate(swerveAmount, 0, 0);
         MoveSystem();
         HorizontalMovement();
     }
@@ -265,12 +269,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(0, 0, Speed * Time.deltaTime);
             MoveControlSystem();
-            //_moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
+            
             //if (IsClampRight)
             //{
             //    if (MoveFactorX <= 0)
             //    {
-            //        MoveControlSystem();
             //    }
             //}
             //else if (IsClampLeft)
@@ -354,6 +357,22 @@ public class PlayerController : MonoBehaviour
         IdleRandomIndex = UnityEngine.Random.Range(0, 2);
     }
 
+    void MovementInput()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            _lastFrameFingerPositionX = Input.mousePosition.x;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            _moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
+            _lastFrameFingerPositionX = Input.mousePosition.x;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            _moveFactorX = 0f;
+        }
+    }
     private void MoveControlSystem()
     {
         //Vector2 touchPos = _inputData.touchPosition;
@@ -362,7 +381,9 @@ public class PlayerController : MonoBehaviour
         //    transform.Translate(touchPos.x * (Speed / 100) * Time.deltaTime, 0, 0);
         //    //transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_movementClamp, _movementClamp), transform.position.y, transform.position.z);
         //}
+        
         //_lastFrameFingerPositionX = Input.mousePosition.x;
+        //_moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
         //float swerveAmount = Time.deltaTime * swerveSpeed * MoveFactorX;
         //transform.Translate(swerveAmount, 0, 0);
         WalkAction?.Invoke();
