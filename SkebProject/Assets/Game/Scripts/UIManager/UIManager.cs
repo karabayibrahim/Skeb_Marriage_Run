@@ -77,23 +77,33 @@ public class UIManager : MonoBehaviour
         {
             case RelationStatus.TERRIBLE:
                 FailPanel.SetActive(true);
+                RetryartButton.gameObject.SetActive(true);
                 CompletePanel.SetActive(false);
+                NextButton.gameObject.SetActive(false);
                 break;
             case RelationStatus.BAD:
                 FailPanel.SetActive(true);
+                RetryartButton.gameObject.SetActive(true);
                 CompletePanel.SetActive(false);
+                NextButton.gameObject.SetActive(false);
                 break;
             case RelationStatus.NORMAL:
                 FailPanel.SetActive(false);
+                RetryartButton.gameObject.SetActive(false);
                 CompletePanel.SetActive(true);
+                NextButton.gameObject.SetActive(true);
                 break;
             case RelationStatus.GOOD:
                 FailPanel.SetActive(false);
+                RetryartButton.gameObject.SetActive(false);
                 CompletePanel.SetActive(true);
+                NextButton.gameObject.SetActive(true);
                 break;
             case RelationStatus.EXCELLENT:
                 FailPanel.SetActive(false);
+                RetryartButton.gameObject.SetActive(false);
                 CompletePanel.SetActive(true);
+                NextButton.gameObject.SetActive(true);
                 break;
             default:
                 break;
