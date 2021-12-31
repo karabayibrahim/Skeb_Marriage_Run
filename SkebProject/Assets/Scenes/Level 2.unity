@@ -403,7 +403,7 @@ MonoBehaviour:
   LevelData: {fileID: 11400000, guid: 46300af143081404b9f1b49c955ab1c0, type: 2}
   CurrentLevel: {fileID: 1181009435}
   Cam: {fileID: 2083359118}
-  UIManager: {fileID: 0}
+  UIManager: {fileID: 1236027879}
   GameStateIndex: 0
   TextData: {fileID: 11400000, guid: c654a9b01260cdf459c00bf17a45d5d9, type: 2}
   AgeControl: 0
