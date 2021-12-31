@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
-  controlID: 69
+  controlID: 66
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 492}
   m_MaxSize: {x: 12005, y: 14042}
   vertical: 1
-  controlID: 70
+  controlID: 67
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 605, y: 221}
   m_MaxSize: {x: 12005, y: 4021}
   vertical: 0
-  controlID: 71
+  controlID: 68
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 371
     height: 674
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -210,10 +210,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 371
     y: 0
-    width: 400
+    width: 572
     height: 674
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -235,12 +235,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 771
+    x: 943
     y: 0
-    width: 761
+    width: 589
     height: 674
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 16}
@@ -293,8 +293,8 @@ MonoBehaviour:
     y: 0
     width: 388
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -332,7 +332,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 5c0afdff7432fdff0a51fdff5e54fdff3efbffff1ad1000010d5000002d60000e85a0500
+      m_ExpandedIDs: 5e56fdffd440feff585ffefff079feff7a98feffe6b6feffe6e5fefff612ffff704dffffbe68ffff2288ffff04a6ffff4ac0ffff3cfbffffcad00000d8d1000078d2000036d300003ad40000a4d5000058d600002aa401007cad0100eaaf010068be010048cc010084db0100d4db01005adf01006adf0100e4e00100046b02008c6f02009c6f02001ca00200daa0020048a30200fca30200deb10200eeb1020076b6020086b602007edf02008edf0200
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -379,7 +379,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 371
     y: 73
-    width: 398
+    width: 570
     height: 653
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
@@ -392,9 +392,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 590.41296, y: -155.59085, z: 196.52087}
+    m_Target: {x: 1024, y: 883.6061, z: 0}
     speed: 2
-    m_Value: {x: 590.41296, y: -155.59085, z: 196.52087}
+    m_Value: {x: 1024, y: 883.6061, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -440,13 +440,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.11820965, y: -0.014894358, z: 0.0017732698, w: 0.9928757}
+    m_Target: {x: 0.025493825, y: -0.016494004, z: 0.00042066607, w: 0.9995393}
     speed: 2
-    m_Value: {x: 0.11820961, y: -0.014894352, z: 0.0017732693, w: 0.99287534}
+    m_Value: {x: 0.025493812, y: -0.016493997, z: 0.00042066586, w: 0.99953884}
   m_Size:
-    m_Target: 1266.6721
+    m_Target: 2113.0867
     speed: 2
-    m_Value: 1266.6721
+    m_Value: 2113.0867
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -726,10 +726,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 468
-    y: 181
-    width: 973
-    height: 501
+    x: 1144
+    y: 73
+    width: 386
+    height: 653
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -784,7 +784,7 @@ MonoBehaviour:
     height: 252
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: player
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -796,20 +796,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 74
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: 74
   m_LastProjectPath: "C:\\Users\\\u0130brahim Karabay\\Documents\\GitHub\\Skeb_Marriage_Run\\SkebProject"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e0340100
-    m_LastClickedID: 79072
-    m_ExpandedIDs: 00000000e8330100ea330100ec330100ee330100f0330100f2330100f4330100f6330100f8330100fa330100fc330100fe33010000340100023401000434010006340100083401000a3401000c3401000e34010010340100123401001434010016340100183401001a3401001c3401001e34010020340100223401002434010026340100283401002a3401002c3401002e34010030340100323401003434010036340100383401003a3401003c3401003e34010040340100423401004434010046340100483401004a3401004c3401004e34010050340100523401005434010056340100583401005a3401005c3401005e34010060340100623401006434010066340100683401006a3401006c3401006e34010070340100723401007434010076340100783401007a3401007c3401007e340100803401001836010022370100c6a00300c8a0030000b00300726105007461050000ca9a3b
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 00000000583301005a3301005c3301005e33010060330100623301006433010066330100683301006a3301006c3301006e33010070330100723301007433010076330100783301007a3301007c3301007e33010080330100823301008433010086330100883301008a3301008c3301008e33010090330100923301009433010096330100983301009a3301009c3301009e330100a0330100a2330100a4330100a6330100a8330100aa330100ac330100ae330100b0330100b2330100b4330100b6330100b8330100ba330100bc330100be330100c0330100c2330100c4330100c6330100c8330100ca330100cc330100ce330100d0330100d2330100d4330100d6330100d8330100da330100dc330100de330100e0330100e2330100e4330100e6330100e8330100ea330100ec330100ee330100f0330100f2330100f4330100f6330100f8330100fa330100fc330100fe33010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -837,7 +837,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8330100ea330100ec330100ee330100f0330100f2330100f4330100f6330100f8330100fa330100fc330100fe33010000340100023401000434010006340100083401000a3401000c3401000e34010010340100123401001434010016340100183401001a3401001c3401001e34010020340100223401002434010026340100283401002a3401002c3401002e34010030340100323401003434010036340100383401003a3401003c3401003e34010040340100423401004434010046340100483401004a3401004c3401004e34010050340100523401005434010056340100583401005a3401005c3401005e34010060340100623401006434010066340100683401006a3401006c3401006e34010070340100723401007434010076340100783401007a3401007c3401007e34010080340100
+    m_ExpandedIDs: 00000000583301005a3301005c3301005e33010060330100623301006433010066330100683301006a3301006c3301006e33010070330100723301007433010076330100783301007a3301007c3301007e33010080330100823301008433010086330100883301008a3301008c3301008e33010090330100923301009433010096330100983301009a3301009c3301009e330100a0330100a2330100a4330100a6330100a8330100aa330100ac330100ae330100b0330100b2330100b4330100b6330100b8330100ba330100bc330100be330100c0330100c2330100c4330100c6330100c8330100ca330100cc330100ce330100d0330100d2330100d4330100d6330100d8330100da330100dc330100de330100e0330100e2330100e4330100e6330100e8330100ea330100ec330100ee330100f0330100f2330100f4330100f6330100f8330100fa330100fc330100fe330100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000e03c00003e5000001c680000c015010014b600004cd70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 22}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 74
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 111
@@ -976,15 +976,15 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 771
+    x: 943
     y: 73
-    width: 759
+    width: 587
     height: 653
   m_ViewDataDictionary: {fileID: 0}
   m_SerializedViewNames:
   - UnityEditor.GameView
   m_SerializedViewValues:
-  - "C:\\Users\\\u0130brahim Karabay\\Documents\\GitHub\\Skeb_Marriage_Run\\SkebProject\\Library\\PlayModeViewStates\\ce0f14a03f5d8864b88e6b5b12b0ce5e"
+  - "C:\\Users\\\u0130brahim Karabay\\Documents\\GitHub\\Skeb_Marriage_Run\\SkebProject\\Library\\PlayModeViewStates\\8a11f6280cbe3774db95d8e853e4b1d1"
   m_SerializedCustomFieldsNames: []
   m_SerializedCustomFieldsValues: []
   m_PlayModeViewName: Device Simulator

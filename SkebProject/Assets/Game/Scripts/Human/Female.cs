@@ -40,12 +40,14 @@ public class Female : Human
         {
             var age = (int)(GameManager.Instance.Player.AgeCalculator() * 70) + 18;
             GameManager.Instance.UIManager.AgeText.text = "Age"+" "+":"+"" + age;
+            GameManager.Instance.AgeCount.text= "Age" + " " + ":" + "" + age;
         }
         else
         {
             GameManager.Instance.UIManager.AgeText.text = "Age"+" "+":"+"" + 18;
+            GameManager.Instance.AgeCount.text = "Age" + " " + ":" + "" + 18;
         }
-        
+
     }
 
     public override void WalkState()
